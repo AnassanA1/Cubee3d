@@ -31,7 +31,7 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	double	camera_x;
+	double	camera_x; // 
 	double	ray_dir_x;
 	double	ray_dir_y;
 	int		map_x;

@@ -2,7 +2,7 @@ NAME = cub3D
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -I./includes -I./MLX42/include
-MLXFLAGS = -framework OpenGL -framework AppKit -L/opt/homebrew/lib -lglfw
+MLXFLAGS = -framework OpenGL -framework AppKit -L/Users/azghibat/homebrew/lib -lglfw
 
 SRCS_DIR = srcs
 GNL_DIR = get_next_line

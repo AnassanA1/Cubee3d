@@ -1,19 +1,21 @@
 raycasting :
-    - each ray --->  - what it hits .
-                     - how far away it (can determine wall height)
-                     - where in the wall (texture).
+
+                - each ray --->  - what it hits .
+                                - how far away it (can determine wall height)
+                                - where in the wall (texture).
 
 the player representation in the map :
-    - the player needs 3 things : - position in the map (x, y)
-                                  - direction vector (the direction the player looking at (dirx, diry))
-                                  - camera plane (simply camera screen defines the FOV 0,66 for human view)
 
- 
-     Top of FOV ↑
-                |
-You are here → ● → Looking this way.        note : the plane is always perpendicular to the player
-                |                                               direction looking.
-   Bottom of FOV ↓
+                    - the player needs 3 things : - position in the map (x, y)
+                                                - direction vector (the direction the player looking at (dirx, diry))
+                                                - camera plane (simply camera screen defines the FOV 0,66 for human view)
+
+                
+                    Top of FOV ↑
+                                |
+                You are here → ● → Looking this way.        note : the plane is always perpendicular to the player
+                                |                                               direction looking.
+                Bottom of FOV ↓
 
 
                                     visual example:
@@ -28,6 +30,73 @@ You are here → ● → Looking this way.        note : the plane is always per
                                             |
                                             ↓
 
-
 draw pixels :
-                                    
+
+                image is 5 pixels wide :
+
+                                            (0,0) (1,0) (2,0) (3,0) (4,0)
+
+                                            (0,1) (1,1) (2,1) (3,1) (4,1)
+
+                                            (0,2) (1,2) (2,2) (3,2) (4,2)
+                                        
+                in memory its like this :  (indexes)
+
+                        0 1 2 3 4 5 6 7 8 9 10 11 ...
+                        0 1 2 3 4 5 6 7 8 9 10 11 ...
+                        0 1 2 3 4 5 6 7 8 9 10 11 ...
+
+                step one : how to find the right position pixel in the screen ?
+
+                            pixel_number = y * width + x
+
+                step two : convert pixel index to bytes index why ??
+                            - because mlx pixel buffer wants 4 separate bytes
+                                [ R | G | B | A ]
+
+                            How is a color stored in an integer ?
+                        When you use a color like: 0xRRGGBB
+                            It looks like this in bytes (each box = 8 bits) color = 0xRRGGBB
+                            ╔════╦════╦════╗
+                            ║ RR ║ GG ║ BB ║   ← 3 bytes = 24 bits
+                            ╚════╩════╩════╝
+
+                            RR GG BB
+                            ↑  ↑  ↑
+                            8b 8b 8b  → total 24 bits
+
+                So:
+
+                Blue → rightmost 8 bits → no shift
+
+                Green → in the middle → shift 8 bits
+
+                Red → on the far left → shift 16 bits
+
+                example : to get the red componements we shift by 16 becomes 0x0000AA  
+                            - then we compare with 0xFF = 11111111 in binary
+                    
+                00000000 00000000 00000000 10101010   (value)
+                00000000 00000000 00000000 11111111   (0xFF)
+                -----------------------------------
+                00000000 00000000 00000000 10101010   (result)
+
+                Only the last 8 bits (AA) survive 
+
+
+lets cast some rays baby :
+
+    - to cast some rays we need to defines this formula : 
+                            rayDirX = playerDirX + planeX * camera_x
+                            rayDirY = playerDirY + planeY * camera_x
+
+    - camera x ?? yeah since we casting rays from left to right 
+        camera_x = 2 * x / screenWidth - 1
+    
+                    camerax.leftside = -1
+                    camera.middleside = 0
+                    camera.rightside = 1
+    
+
+
+
