@@ -2,11 +2,10 @@
 
 void	game_loop(void *param)
 {
-    (void)param;
-	// t_game	*game;
+	t_game	*game;
 
-	// game = (t_game *)param;
-	// raycasting(game);
+	game = (t_game *)param;
+	raycasting(game);
 }
 
 void	check_arguments(int argc, char **argv)
@@ -34,13 +33,13 @@ int	main(int argc, char **argv)
 	check_arguments(argc, argv);
 	init_game(&game);
     // todoo: parse map file
-	// if (!parse_file(argv[1], &game))
-	// 	error_exit("Failed to parse map file");
+	if (!parse_file(argv[1], &game))
+		error_exit("Failed to parse map file");
 	init_mlx(&game);
 	// mlx_key_hook(game.mlx, &key_hook, &game);
 	mlx_loop_hook(game.mlx, &game_loop, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
-	//free_map(&game);
+	free_map(&game);
 	return (0);
 }

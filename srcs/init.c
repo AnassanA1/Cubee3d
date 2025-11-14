@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anasszgh <anasszgh@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/12 06:24:02 by anasszgh          #+#    #+#             */
-/*   Updated: 2025/11/12 06:24:08 by anasszgh         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/cub3d.h"
 
 void	init_game(t_game *game)
@@ -27,8 +15,8 @@ void	init_game(t_game *game)
 	game->textures.south_tex = NULL;
 	game->textures.west_tex = NULL;
 	game->textures.east_tex = NULL;
-	game->colors.floor_r = -1;
-	game->colors.ceil_r = -1;
+	game->colors.floor_r = 20;
+	game->colors.ceil_r = 20;
 	game->player.plane_x = 0;
 	game->player.plane_y = 0.66;
 }
@@ -100,7 +88,7 @@ void	init_player(t_game *game)
 				game->map.grid[y][x] == 'E' || \
 				game->map.grid[y][x] == 'W')
 			{
-				game->player.pos_x = x + 0.5;
+				game->player.pos_x = x + 0.5; // why 0,5 ? each grid cell is 1 unit wide, so to place the player in the center of the cell we add 0.5
 				game->player.pos_y = y + 0.5;
 				set_player_direction(game, game->map.grid[y][x]);
 				return ;

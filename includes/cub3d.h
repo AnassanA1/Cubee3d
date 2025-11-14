@@ -59,14 +59,14 @@ typedef struct s_wall
 
 typedef struct s_map
 {
-	char	**grid;
-	int		width;
-	int		height;
+	char	**grid; //fill grid with all map lines
+	int		width; // width to the longest line length
+	int		height; // height to the number of map lines
 }	t_map;
 
 typedef struct s_textures
 {
-	char			*north;
+	char			*north; // store path in north
 	char			*south;
 	char			*west;
 	char			*east;
@@ -103,7 +103,32 @@ void	init_player(t_game *game);
 void	set_player_direction(t_game *game, char dir);
 
 // Parsing
-//TODO: Add more parsing functions as needed
+char	*trim_newline(char *str);
+int	parse_texture_line(char *line, t_game *game);
+char	*skip_spaces(char *line);
+int	parse_color(char *line, t_colors *colors, int is_ceiling);
+int	parse_textures(int fd, t_game *game);
+int	all_textures_loaded(t_game *game);
+int	open_file(char *filename);
+int	parse_file(char *filename, t_game *game);
+int	get_line_width(char *line);
+char	**store_map_lines(int fd, int *height, int *width);
+char	**allocate_map_grid(int height, int width);
+void	fill_map_line(char *dest, char *src, int width);
+int	parse_map(int fd, t_game *game);
+int	is_valid_char(char c);
+int	check_surrounding(t_game *game, int x, int y);
+int	check_borders(t_game *game);
+int	find_player(t_game *game);
+int	is_valid_map(t_game *game);
+
+//drawing.c
+void    put_pixel(mlx_image_t *img, int x, int y, int color);
+void    draw_floor_ceilling(t_game *game);
+
+//raycasting.c
+void raycasting(t_game *game);
+
 
 // utiles
 void	error_exit(char *message);

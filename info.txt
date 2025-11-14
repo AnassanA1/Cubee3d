@@ -1,0 +1,33 @@
+raycasting :
+    - each ray --->  - what it hits .
+                     - how far away it (can determine wall height)
+                     - where in the wall (texture).
+
+the player representation in the map :
+    - the player needs 3 things : - position in the map (x, y)
+                                  - direction vector (the direction the player looking at (dirx, diry))
+                                  - camera plane (simply camera screen defines the FOV 0,66 for human view)
+
+ 
+     Top of FOV ↑
+                |
+You are here → ● → Looking this way.        note : the plane is always perpendicular to the player
+                |                                               direction looking.
+   Bottom of FOV ↓
+
+
+                                    visual example:
+                                    
+                                    Facing EAST (→):
+                                    Direction = (1, 0) pointing right →
+                                    Plane = (0, 0.66) pointing up/down ↕
+                                    
+                                            ↑ (0, 0.66)
+                                            |
+                                        ←───●───→ (1, 0)
+                                            |
+                                            ↓
+
+
+draw pixels :
+                                    

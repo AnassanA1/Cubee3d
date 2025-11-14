@@ -10,6 +10,13 @@ GNL_DIR = get_next_line
 SRCS = $(SRCS_DIR)/main.c \
        $(SRCS_DIR)/init.c \
 	   $(SRCS_DIR)/utiles.c \
+	   $(SRCS_DIR)/parse_map.c \
+	   $(SRCS_DIR)/parsing.c \
+	   $(SRCS_DIR)/parse_textures.c \
+	   $(SRCS_DIR)/map_validation.c \
+	   $(SRCS_DIR)/raycasting.c \
+	   $(SRCS_DIR)/drawing.c
+
 
 GNL_SRCS = $(GNL_DIR)/get_next_line.c \
            $(GNL_DIR)/get_next_line_utils.c
