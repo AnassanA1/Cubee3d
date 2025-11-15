@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_contain.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 13:20:36 by msidry           ###   ########.fr       */
+/*   Created: 2025/11/15 10:53:16 by msidry            #+#    #+#             */
+/*   Updated: 2025/11/15 13:18:01 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+int	ft_contain(const char *str, char c)
 {
-	(void)argc;
-	printf("%s : Hello world !\n", argv[0]);
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
 	return (0);
 }

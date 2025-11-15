@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: msidry <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 13:20:36 by msidry           ###   ########.fr       */
+/*   Created: 2024/10/28 21:24:00 by msidry            #+#    #+#             */
+/*   Updated: 2024/10/28 21:27:04 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.h"
-
-int	main(int argc, char *argv[])
+int	ft_tolower(int c)
 {
-	(void)argc;
-	printf("%s : Hello world !\n", argv[0]);
-	return (0);
+	if (c >= 65 && c <= 90)
+		return (c + 32);
+	return (c);
 }

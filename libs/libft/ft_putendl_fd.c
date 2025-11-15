@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: msidry <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 13:20:36 by msidry           ###   ########.fr       */
+/*   Created: 2024/11/04 01:04:19 by msidry            #+#    #+#             */
+/*   Updated: 2024/11/04 01:06:44 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	ft_putendl_fd(char *s, int fd)
 {
-	(void)argc;
-	printf("%s : Hello world !\n", argv[0]);
-	return (0);
+	if (s)
+	{
+		ft_putstr_fd(s, fd);
+		ft_putchar_fd('\n', fd);
+	}
 }

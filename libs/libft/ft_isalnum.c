@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: msidry <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 13:20:36 by msidry           ###   ########.fr       */
+/*   Created: 2024/10/24 03:10:07 by msidry            #+#    #+#             */
+/*   Updated: 2024/10/24 06:01:15 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+int	ft_isalnum(int c)
 {
-	(void)argc;
-	printf("%s : Hello world !\n", argv[0]);
-	return (0);
+	return (ft_isalpha(c) || ft_isdigit(c));
 }

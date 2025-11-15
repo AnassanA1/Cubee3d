@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: msidry <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 13:20:36 by msidry           ###   ########.fr       */
+/*   Created: 2024/10/28 22:13:16 by msidry            #+#    #+#             */
+/*   Updated: 2024/10/28 23:49:19 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+char	*ft_strrchr(const char *str, int c)
 {
-	(void)argc;
-	printf("%s : Hello world !\n", argv[0]);
+	size_t			len;
+	unsigned char	chr;
+	char			*ptr;
+
+	len = ft_strlen(str);
+	chr = (char)c;
+	ptr = (char *)str;
+	while (len > 0 && ptr[len] != chr)
+		len--;
+	if (ptr[len] == chr)
+		return (&ptr[len]);
 	return (0);
 }

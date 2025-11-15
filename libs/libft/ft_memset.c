@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: msidry <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 13:20:36 by msidry           ###   ########.fr       */
+/*   Created: 2024/10/27 16:39:36 by msidry            #+#    #+#             */
+/*   Updated: 2024/10/28 00:50:29 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	*ft_memset(void *b, int c, size_t len)
 {
-	(void)argc;
-	printf("%s : Hello world !\n", argv[0]);
-	return (0);
+	size_t	bytes;
+	char	*ptr;
+
+	ptr = (char *)b;
+	bytes = 0;
+	while (bytes < len)
+	{
+		ptr[bytes++] = (unsigned char)c;
+	}
+	return (b);
 }

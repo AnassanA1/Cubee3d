@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: msidry <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 13:20:36 by msidry           ###   ########.fr       */
+/*   Created: 2024/11/03 22:07:34 by msidry            #+#    #+#             */
+/*   Updated: 2024/11/03 22:41:33 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.h"
-
-int	main(int argc, char *argv[])
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	(void)argc;
-	printf("%s : Hello world !\n", argv[0]);
-	return (0);
+	unsigned int	i;
+
+	i = 0;
+	if (s && f)
+	{
+		while (s[i])
+		{
+			f(i, &s[i]);
+			i++;
+		}
+	}
 }

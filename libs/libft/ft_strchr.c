@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 13:20:36 by msidry           ###   ########.fr       */
+/*   Created: 2024/10/28 21:35:06 by msidry            #+#    #+#             */
+/*   Updated: 2024/11/03 19:31:17 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.h"
-
-int	main(int argc, char *argv[])
+char	*ft_strchr(const char *str, int c)
 {
-	(void)argc;
-	printf("%s : Hello world !\n", argv[0]);
+	char	chr;
+
+	chr = (char)c;
+	while (*str && *str != chr)
+		str++;
+	if (*str == chr)
+		return ((char *)str);
 	return (0);
 }
