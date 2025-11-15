@@ -1,0 +1,9 @@
+*.o
+*.txt
+*.out
+*.exe
+*.vscode
+*.DS_Store
+test
+.info
+a.out
