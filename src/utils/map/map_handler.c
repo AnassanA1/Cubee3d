@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   const.h                                            :+:      :+:    :+:   */
+/*   map_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 15:54:21 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/16 13:18:28 by msidry           ###   ########.fr       */
+/*   Created: 2025/11/16 13:47:43 by msidry            #+#    #+#             */
+/*   Updated: 2025/11/16 19:36:54 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONST_H
-#define CONST_H
+#include "../../../include/main.h"
 
-# define ARGS 2
-# define EXTENSION ".cube"
-# define MAPLINE "\033[1;47m$MAPLINE\033[0m"
-# define CONFIG "\033[1;35mCONFIG :\033[0m \033[1;33m$CONFIG\033"
-# define NORTH "NO"
-# define SOUTH "SO"
-# define WEST "WE"
-# define EAST "EA"
-# define SKY "C"
-# define FLOOR "F"
-#endif
+
+void map_handler(t_game *ref)
+{
+    if (!isAllOk(ref))
+        return ;
+    read_raw_map(ref);
+    texture_handler(ref);
+}

@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   const.h                                            :+:      :+:    :+:   */
+/*   is_space.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 15:54:21 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/16 13:18:28 by msidry           ###   ########.fr       */
+/*   Created: 2025/11/16 17:50:46 by msidry            #+#    #+#             */
+/*   Updated: 2025/11/16 19:49:28 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONST_H
-#define CONST_H
-
-# define ARGS 2
-# define EXTENSION ".cube"
-# define MAPLINE "\033[1;47m$MAPLINE\033[0m"
-# define CONFIG "\033[1;35mCONFIG :\033[0m \033[1;33m$CONFIG\033"
-# define NORTH "NO"
-# define SOUTH "SO"
-# define WEST "WE"
-# define EAST "EA"
-# define SKY "C"
-# define FLOOR "F"
-#endif
+int is_space(int c)
+{
+    return ((c >= 9 && c <= 13) || (c == 32)) ;
+}

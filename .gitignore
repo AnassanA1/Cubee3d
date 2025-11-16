@@ -4,7 +4,6 @@
 *.exe
 *.vscode
 *.DS_Store
-test
 .info
 a.out
 *.cube

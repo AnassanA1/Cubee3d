@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 14:28:09 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 16:52:53 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/16 13:42:30 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/main.h"
+#include "../../../include/main.h"
 
 
-bool init_error(t_game *container)
+bool init_error(t_error *ref)
 {
-    if (container)
+    if (ref)
     {
-        setStat(&container->error, 0);
-        setError(&container->error, NULL);
+        setStat(ref, 0);
+        setError(ref, NULL);
         return (false);
     }
     return (true);

@@ -17,16 +17,30 @@ DEPENDENCY_HEADER = $(DEPENDENCY_PATH)
 FRAMEWORKS = -framework OpenGL -framework AppKit
 MLXLIB = -lmlx $(FRAMEWORKS)
 
-SRCS =	src/utils/error.c \
-		src/utils/game_init.c \
+SRCS =	src/utils/game_init.c \
 		src/utils/game_destroy.c \
-		src/utils/validatorInput.c \
-		src/utils/isAllGood.c \
+		src/utils/error/error_handler.c \
+		src/utils/error/error_helpers.c \
+		src/utils/input/input_handler.c \
+		src/utils/input/input_validator.c \
+		src/utils/map/map_handler.c \
+		src/utils/map/read_raw_map.c \
+		src/utils/map/isMapConfig.c \
+		src/utils/texture/texture_handler.c \
+		src/utils/texture/handler_east.c \
+		src/utils/texture/handler_floor.c \
+		src/utils/texture/handler_north.c \
+		src/utils/texture/handler_sky.c \
+		src/utils/texture/handler_south.c \
+		src/utils/texture/handler_west.c \
+		src/utils/texture/texture_format_handler.c \
+		src/utils/allGood.c \
 		src/utils/concat3.c \
-		src/utils/map.c \
-		src/utils/find_replace.c
+		src/utils/find_replace.c \
+		src/utils/is_space.c
 
-OBJS = $(MAIN:.c=.o) $(SRCS:.c=.o)
+TEST =	src/test/test.c
+OBJS = $(MAIN:.c=.o) $(SRCS:.c=.o) $(TEST:.c=.o)
 
 
 %.o : %.c $(INCLUDE)

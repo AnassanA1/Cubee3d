@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validatorInput.c                                   :+:      :+:    :+:   */
+/*   input_validator.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:42:15 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 18:55:45 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/16 13:43:07 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/main.h"
+#include "../../../include/main.h"
 
 static bool validArgc(t_game *game);
 static bool validFile(t_game *game);
 static bool validExtension(t_game *game);
 
-void validatorInput(t_game *game)
+void input_validator(t_game *game)
 {
     validCallback callbacks[4];
     size_t idx;

@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   const.h                                            :+:      :+:    :+:   */
+/*   handler_south.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 15:54:21 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/16 13:18:28 by msidry           ###   ########.fr       */
+/*   Created: 2025/11/16 16:30:13 by msidry            #+#    #+#             */
+/*   Updated: 2025/11/16 19:39:10 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONST_H
-#define CONST_H
+#include "../../../include/main.h"
 
-# define ARGS 2
-# define EXTENSION ".cube"
-# define MAPLINE "\033[1;47m$MAPLINE\033[0m"
-# define CONFIG "\033[1;35mCONFIG :\033[0m \033[1;33m$CONFIG\033"
-# define NORTH "NO"
-# define SOUTH "SO"
-# define WEST "WE"
-# define EAST "EA"
-# define SKY "C"
-# define FLOOR "F"
-#endif
+
+void set_south_texture(t_error *err, t_gametxt *textures, char *line)
+{
+     
+    echo("FROM SOUTH HANDLER!");
+    texture_info(&textures->south_txt);
+    texture_format_handler(err, &textures->south_txt, line);
+
+}

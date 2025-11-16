@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:10:10 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 20:32:29 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/16 15:10:45 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void clean_scene(t_scene *scene)
 {
     if (scene->fd > -1)
         close(scene->fd);
-    ft_lstclear(&scene->map, free);
+    ft_lstclear(&scene->rawmap, free);
 }
 static void clean_error(t_error *error)
 {

@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isAllGood.c                                        :+:      :+:    :+:   */
+/*   input_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 18:17:13 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 20:18:48 by msidry           ###   ########.fr       */
+/*   Created: 2025/11/16 13:32:59 by msidry            #+#    #+#             */
+/*   Updated: 2025/11/16 14:05:57 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/main.h"
+#include "../../../include/main.h"
 
-void isAllGood(t_game **ref)
+
+void input_handler(t_game *ref)
 {
-    int exitCode;
-    if (!ref || !*ref)
-        exit(EXIT_FAILURE);
-    exitCode = (*ref)->error.stat;
-    if (exitCode)
-    {
-        what(&(*ref)->error);
-        game_destroy(ref);
-        exit(exitCode);
-    }
-}
-bool isAllOk(t_game *ref)
-{
-    if (!ref)
-        return(false);
-    return (ref->error.stat == 0);
+    if (!isAllOk(ref))
+        return ;
+    input_validator(ref);
+    //TODO: check if all good !
 }
