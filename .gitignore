@@ -8,3 +8,5 @@ test
 .info
 a.out
 *.cube
+cube3D
+*.a
