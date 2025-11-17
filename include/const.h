@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:54:21 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/16 13:18:28 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/17 10:41:51 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,9 @@
 # define EAST "EA"
 # define SKY "C"
 # define FLOOR "F"
+# define HEXA "HEXA"
+# define RGBA "RGBA"
+# define PATH "PATH"
+# define HEXASET "0123456789ABCDEF"
+# define DECISET "0123456789,"
 #endif

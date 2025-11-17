@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:42:15 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/16 13:43:07 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/17 09:07:18 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static bool validExtension(t_game *game)
 
     if (!isAllOk(game))
         return (false);
-    if (!game->argv[1][0])
+    if (!game->scene.path)
     {
         setError(&game->error, BAD_FEMPTY);
         setStat(&game->error, 2);

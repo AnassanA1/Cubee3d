@@ -6,23 +6,12 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 14:28:09 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/16 13:42:30 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/17 15:14:36 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
 
-
-bool init_error(t_error *ref)
-{
-    if (ref)
-    {
-        setStat(ref, 0);
-        setError(ref, NULL);
-        return (false);
-    }
-    return (true);
-}
 
 void setError(t_error *error, char *msg)
 {
@@ -41,11 +30,14 @@ void setStat(t_error *error, int stat)
     error->stat = stat;
 }
 
-int what(t_error *error)
+int getStat(t_error *error)
 {
-    if (error->stat)
-        putError(error->message);
     return (error->stat);
+}
+
+char *getError(t_error *error)
+{
+    return (error->message);
 }
 void putError(char *msg)
 {

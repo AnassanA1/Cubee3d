@@ -19,7 +19,6 @@ MLXLIB = -lmlx $(FRAMEWORKS)
 
 SRCS =	src/utils/game_init.c \
 		src/utils/game_destroy.c \
-		src/utils/error/error_handler.c \
 		src/utils/error/error_helpers.c \
 		src/utils/input/input_handler.c \
 		src/utils/input/input_validator.c \
@@ -34,13 +33,21 @@ SRCS =	src/utils/game_init.c \
 		src/utils/texture/handler_south.c \
 		src/utils/texture/handler_west.c \
 		src/utils/texture/texture_format_handler.c \
-		src/utils/allGood.c \
-		src/utils/concat3.c \
-		src/utils/find_replace.c \
-		src/utils/is_space.c
+		src/utils/texture/handler_color.c \
+		src/utils/allGood.c
+		
 
-TEST =	src/test/test.c
-OBJS = $(MAIN:.c=.o) $(SRCS:.c=.o) $(TEST:.c=.o)
+HELPERS =	src/utils/help/array2d.c \
+			src/utils/help/concat3.c \
+			src/utils/help/contain_only.c \
+			src/utils/help/converter.c \
+			src/utils/help/find_replace.c \
+			src/utils/help/is_space.c \
+			src/utils/help/match_count.c
+
+TEST =	src/test/test.c 
+
+OBJS = $(MAIN:.c=.o) $(SRCS:.c=.o) $(HELPERS:.c=.o) $(TEST:.c=.o)
 
 
 %.o : %.c $(INCLUDE)

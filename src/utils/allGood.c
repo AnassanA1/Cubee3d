@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isAllGood.c                                        :+:      :+:    :+:   */
+/*   allGood.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 18:17:13 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/16 13:45:09 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/17 15:35:37 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void mostBeGood(t_game **ref)
     exitCode = (*ref)->error.stat;
     if (exitCode)
     {
-        what(&(*ref)->error);
+        putError(getError(&(*ref)->error));
         game_destroy(ref);
         exit(exitCode);
     }

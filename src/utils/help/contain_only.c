@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   contain_only.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/16 13:27:11 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/16 14:05:52 by msidry           ###   ########.fr       */
+/*   Created: 2025/11/17 14:23:52 by msidry            #+#    #+#             */
+/*   Updated: 2025/11/17 15:35:43 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
 
-void error_handler(t_error *error)
+bool contain_only(char *str, char *set)
 {
-    init_error(error);
+    int idx;
+
+    if (!str || !set)
+        return (false);
+    while (*str)
+    {
+        idx = -1;
+        while (set[++idx])
+        {
+            if (*str == set[idx])
+                break;
+        }
+        if (*str != set[idx])
+            return (false);
+        str++;
+    }
+    return (true);
 }

@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isMapConfig.c                                      :+:      :+:    :+:   */
+/*   match_count.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/16 11:27:08 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/17 15:19:53 by msidry           ###   ########.fr       */
+/*   Created: 2025/11/17 14:15:26 by msidry            #+#    #+#             */
+/*   Updated: 2025/11/17 15:40:12 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
 
-int isMapConfig(char *line)
+t_uint match_count(char *str, unsigned char c)
 {
-    static char *identifiers[7];
-    int i;
+    t_uint count;
 
-    if (!line)
+    count = 0;
+    if (!str)
         return (0);
-    i = -1;
-    identifiers[0] = NORTH;
-    identifiers[1] = SOUTH;
-    identifiers[2] = WEST;
-    identifiers[3] = EAST;
-    identifiers[4] = SKY;
-    identifiers[5] = FLOOR;
-    identifiers[6] = NULL;
-    while (identifiers[++i])
+    while (*str)
     {
-        if (!ft_strncmp(identifiers[i], line, ft_strlen(identifiers[i])))
-            return (ft_strlen(identifiers[i]));
+        if (*str == c)
+            count++;
+        str++;
     }
-    return (0);
+    if (*str == c)
+        count++;
+    return (count);
 }

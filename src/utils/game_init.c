@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 14:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/16 15:10:52 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/17 15:09:37 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void game_init(t_game**ref, int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
     init_default(*ref, argc, argv);
-    error_handler(&(*ref)->error);
     input_handler(*ref);
     map_handler(*ref);
     mostBeGood(ref);

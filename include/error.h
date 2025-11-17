@@ -9,6 +9,7 @@
 # define EMPTY_MAP "\033[1;31mError: Unvalid empty map !\033[0m"
 # define ERROR_GENERAL "\033[1;31mError: $MSG !\033[0m"
 # define ERROR_EXTA "Unvalid file extension"
-# define ERROR_FORMAT "Unvalid texture format support : {file.*, #hex, rgb, argb, '0-256,0-256,0-256'} !"
-
+# define ERROR_FORMAT "\033[1;31mError: Unvalid texture format support : {file.*, #hex, argb(,,,) '0-256,0-256,0-256'} !\033[0m"
+# define ERROR_HEXA "Unvalid hexa color, it shoud be #RRGGBB !"
+# define ERROR_RGBA "\033[1;31mUnvalid rgba color, it shoud be rgba (xxx,xxx,xxx) !\033[0m"
 #endif

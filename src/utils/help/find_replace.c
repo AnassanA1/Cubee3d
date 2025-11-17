@@ -6,11 +6,11 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 17:06:04 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 17:56:31 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/17 14:56:50 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/main.h"
+#include "../../../include/main.h"
 
 
 char	*find_replace(char *src, char *target, char *new, int usefree)
