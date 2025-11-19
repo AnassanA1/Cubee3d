@@ -3,8 +3,9 @@ NAME = cube3D
 
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -pedantic -fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra 
 CSTAGE = -c
+CFLAGS += -pedantic -fsanitize=address -g
 
 MAIN = src/main.c
 INCLUDE = include/main.h
@@ -16,15 +17,15 @@ DEPENDENCY_HEADER = $(DEPENDENCY_PATH)
 
 FRAMEWORKS = -framework OpenGL -framework AppKit
 MLXLIB = -lmlx $(FRAMEWORKS)
+MLXLIB =
 
 SRCS =	src/utils/game_init.c \
 		src/utils/game_destroy.c \
 		src/utils/error/error_helpers.c \
 		src/utils/input/input_handler.c \
-		src/utils/input/input_validator.c \
-		src/utils/map/map_handler.c \
-		src/utils/map/read_raw_map.c \
-		src/utils/map/isMapConfig.c \
+		src/utils/config/config_handler.c \
+		src/utils/config/read_raw_config.c \
+		src/utils/config/is_map_config.c \
 		src/utils/texture/texture_handler.c \
 		src/utils/texture/handler_east.c \
 		src/utils/texture/handler_floor.c \
@@ -35,6 +36,7 @@ SRCS =	src/utils/game_init.c \
 		src/utils/texture/texture_format_handler.c \
 		src/utils/texture/handler_texture_color.c \
 		src/utils/texture/handler_texture_path.c \
+		src/utils/map/map_handler.c \
 		src/utils/allGood.c
 		
 
@@ -45,7 +47,8 @@ HELPERS =	src/utils/help/array2d.c \
 			src/utils/help/find_replace.c \
 			src/utils/help/is_space.c \
 			src/utils/help/match_count.c \
-			src/utils/help/capitalize.c
+			src/utils/help/capitalize.c \
+			src/utils/help/serialize.c
 
 TEST =	src/test/test.c 
 

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_raw_map.c                                     :+:      :+:    :+:   */
+/*   read_raw_config.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 18:53:59 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/16 15:27:58 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/19 11:55:55 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
 
 static int map_start(char *line);
-void read_raw_map(t_game *ref)
+void read_raw_config(t_game *ref)
 {
     char *rawline;
     char *pureline;
@@ -34,7 +34,7 @@ void read_raw_map(t_game *ref)
     ref->scene.fd = -1;
     if (!ref->scene.rawmap)
     {
-        setError(&ref->error, EMPTY_MAP);
+        setError(&ref->error, EMPTY_CONF);
         setStat(&ref->error, 1);
     }
 }
@@ -45,7 +45,7 @@ static int map_start(char *line)
         return (1);
     if (!*line)
         return (0);
-    if (!isMapConfig(line))
+    if (!is_map_config(line))
         inMap = 1; 
     return (1);
 }

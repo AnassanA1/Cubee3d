@@ -6,12 +6,15 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 15:16:19 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/17 16:05:06 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/19 11:05:25 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
 
+
+static void valid_textures(t_error *error, t_gametxt *textuers);
+static int texture_config_handler(t_error *error, t_gametxt *txts, char *line);
 
 void texture_handler(t_game *ref)
 {
@@ -24,17 +27,18 @@ void texture_handler(t_game *ref)
     while (list)
     {
         line = (char *)list->content;
-        if (isMapConfig(line))
+        if (is_map_config(line))
         {
-            if (config_handler(&ref->error, &ref->textures, line))
+            if (texture_config_handler(&ref->error, &ref->textures, line))
                 return;
         }
         list = list->next;
     }
+    valid_textures(&ref->error, &ref->textures);
 }
 
 
-int config_handler(t_error *error, t_gametxt *textures, char *line)
+static int texture_config_handler(t_error *error, t_gametxt *txts, char *line)
 {
     static char     *identifiers[6];
     static callconfi callbacks[6] ;
@@ -56,11 +60,36 @@ int config_handler(t_error *error, t_gametxt *textures, char *line)
     {
         if (!ft_strncmp(identifiers[idx], line, ft_strlen(identifiers[idx])))
         {
-           callbacks[idx](error, textures, line);
+           callbacks[idx](error, txts, line);
            return (error->stat); 
         }
     }
-
     return (0);
 }
 
+
+static void valid_textures(t_error *error, t_gametxt *textuers)
+{
+    char *unvalid;
+
+    unvalid = NULL;
+    if (!textuers->north_txt.isvalid)
+        unvalid = "NORTH";
+    else if (!textuers->south_txt.isvalid)
+        unvalid = "NORTH";
+    else if (!textuers->west_txt.isvalid)
+        unvalid = "WEST";
+    else if (!textuers->east_txt.isvalid)
+        unvalid = "EAST";
+    else if (!textuers->sky_txt.isvalid)
+        unvalid = "SKY";
+    else if (!textuers->floor_txt.isvalid)
+        unvalid = "FLOOR";
+    if (unvalid)
+    {
+        unvalid = find_replace(ERROR_TXT, "$MSG", unvalid, 0);
+        setError(error, unvalid);
+        setStat(error, EXIT_FAILURE);
+        nullstr(&unvalid);
+    }
+}

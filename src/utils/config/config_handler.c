@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   config_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 13:20:29 by msidry           ###   ########.fr       */
+/*   Created: 2025/11/19 10:33:05 by msidry            #+#    #+#             */
+/*   Updated: 2025/11/19 11:22:23 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.h"
+#include "../../../include/main.h"
 
-//static void leakCheck(void);
-int	main(int argc, char *argv[])
+
+void config_handler(t_game *ref)
 {
-	t_game *game;
-
-	game = NULL;
-	game_init(&game, argc, argv);
-	game_destroy(&game);
-	//atexit(leakCheck);
-	return (0);
+    if (!isAllOk(ref))
+        return ;
+    read_raw_config(ref);
+    texture_handler(ref);
+    map_handler(ref);
 }
-
-// static void leakCheck(void)
-// {
-// 	system("leaks -q cube3D");
-// }

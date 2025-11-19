@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:37:40 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/18 14:30:46 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/19 12:56:27 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void echo(char *message);
 void debug(char *lvl, char *message);
 void print_raw_map(t_list *map);
 void texture_info(t_texture *texture);
-
+//char **remove_empty_str_at_end(char **arr);
+void print_map_grid(t_grid grid);
+void config_info(t_game *ref);
 
 
 #endif

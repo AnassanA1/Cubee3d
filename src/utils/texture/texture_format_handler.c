@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 18:44:01 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/18 12:51:39 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/19 11:02:25 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void texture_format_handler(t_error * error, t_texture *target, char *line)
     char *formats[3]= {HEXA, RGBA, PATH};
     size_t idx;
     idx = -1;
-    format = extract_format(line + isMapConfig(line));
+    format = extract_format(line + is_map_config(line));
     if (!format)
     {
         msg = find_replace(ERROR_GENERAL, "$MSG", ERROR_FORMAT, 0) ;

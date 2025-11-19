@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:10:10 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/18 12:57:40 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/19 12:28:19 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void clean_scene(t_scene *scene);
 static void clean_error(t_error *error);
 static void clean_textures(t_gametxt *textures);
+static void clean_map(t_map *map);
 
 void game_destroy(t_game **ref)
 {
@@ -24,6 +25,7 @@ void game_destroy(t_game **ref)
         clean_scene(&(*ref)->scene);
         clean_error(&(*ref)->error);
         clean_textures(&(*ref)->textures);
+        clean_map(&(*ref)->map);
         free(*ref);
         *ref = NULL;
     }
@@ -55,4 +57,11 @@ static void clean_textures(t_gametxt *textures)
         nullstr(&textures->floor_txt.path);
         nullstr(&textures->sky_txt.path);
     }
+}
+
+static void clean_map(t_map *map)
+{
+    map->hight = 0;
+    map->width = 0;
+    nullarr2d((void ***)&map->map2d, str2dlen(map->map2d));
 }

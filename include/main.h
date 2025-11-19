@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/18 14:31:16 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/19 12:36:43 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdbool.h>
 # include <string.h>
 # include <errno.h>
-# include <mlx.h>
+//# include <mlx.h>
 
 // CUSTOM HEADERS
 # include "../libs/libft/libft.h"
@@ -40,18 +40,21 @@ void		putError(char *msg);
 
 // VALIDATION
 void		input_handler(t_game *ref);
-void		input_validator(t_game *ref);
 void		mostBeGood(t_game **ref);
 bool		isAllOk(t_game *ref);
 
 // MAP && scene
 void		map_handler(t_game *ref);
-void		read_raw_map(t_game *ref);
-int		isMapConfig(char *line);
+
+
+//  CONFIG 
+void        config_handler(t_game *ref);
+void		read_raw_config(t_game *ref);
+int         is_map_config(char *line);
+
 
 // TEXTURES 
 void	texture_handler(t_game *ref);
-int     config_handler(t_error *error, t_gametxt *textures, char *line);
 void	set_south_texture(t_error *err, t_gametxt *textures, char *line);
 void	set_north_texture(t_error *err, t_gametxt *textures, char *line);
 void	set_east_texture(t_error *err, t_gametxt *textures, char *line);
@@ -75,6 +78,9 @@ t_uint  rgbatoint(char *rgba); // converte rgba string to t_uint example: 255,25
 t_uint  match_count(char *str, unsigned char c); // count duplicate of char in string !
 bool    contain_only(char *str, char *set); // check if string composed only of set;
 char    *capitalize(const char *str); // to upper string !
-t_uint  hexatoint(char *hexacolor);
+t_uint  hexatoint(char *hexacolor); // converte hexa string to t_uint example: #FFFFFF to ~0 
+char    **serializer(t_list *list);
+t_list  *dserializer(char **arr);
+char    **trim_tail_empty(char **arr);
 
 #endif
