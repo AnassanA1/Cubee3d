@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 12:36:43 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/20 11:00:16 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ bool		isAllOk(t_game *ref);
 
 // MAP && scene
 void		map_handler(t_game *ref);
+void        map_validator(t_game *ref);
 
 
 //  CONFIG 
@@ -82,5 +83,8 @@ t_uint  hexatoint(char *hexacolor); // converte hexa string to t_uint example: #
 char    **serializer(t_list *list);
 t_list  *dserializer(char **arr);
 char    **trim_tail_empty(char **arr);
+void    transform(char *str, const char *set, int c);
+void    *ft_realloc(void *ptr, size_t oldsize, size_t newsize);
+char    *normalize(char *str, size_t newsize, unsigned char toapp);
 
 #endif

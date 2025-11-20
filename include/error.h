@@ -14,4 +14,8 @@
 # define ERROR_HEXA "Unvalid hexa color, it shoud be #RRGGBB !"
 # define ERROR_RGBA "\033[1;31mUnvalid rgba color, it shoud be rgba (xxx,xxx,xxx) !\033[0m"
 # define ERROR_TXT "\033[1;31mError: $MSG texture was not set !\033[0m"
+# define BAD_E_LINE "Empty Line within the map !"
+# define BAD_C_LINE "Map line should contain only {1, 0, E, W, S, N} !"
+# define BAD_D_LINE "Player can face only one direction {S, N, E, W} !"
+# define BAD_S_LINE "Map has to be surrounded with  wall, a.k.a {1} !"
 #endif

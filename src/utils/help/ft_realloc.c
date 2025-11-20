@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 16:06:00 by msidry           ###   ########.fr       */
+/*   Created: 2025/11/19 16:14:01 by msidry            #+#    #+#             */
+/*   Updated: 2025/11/20 11:18:03 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.h"
+#include "../../../include/main.h"
 
-static void leakCheck(void);
-int	main(int argc, char *argv[])
+void *ft_realloc(void *ptr, size_t oldsize, size_t newsize)
 {
-	t_game *game;
+    void *newptr;
 
-	game = NULL;
-	game_init(&game, argc, argv);
-	game_destroy(&game);
-	atexit(leakCheck);
-	return (0);
+    newptr = ft_calloc(newsize, sizeof(char));
+    if (!newptr)
+        return (free(ptr), NULL);
+    ft_memcpy(newptr, ptr, oldsize + 1);
+    free(ptr);
+    return (newptr);
 }
 
-static void leakCheck(void)
-{
- 	system("leaks -q cube3D");
-}

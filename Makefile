@@ -5,7 +5,7 @@ NAME = cube3D
 CC = cc
 CFLAGS = -Wall -Werror -Wextra 
 CSTAGE = -c
-CFLAGS += -pedantic -fsanitize=address -g
+//CFLAGS += -pedantic -fsanitize=address -g
 
 MAIN = src/main.c
 INCLUDE = include/main.h
@@ -37,6 +37,7 @@ SRCS =	src/utils/game_init.c \
 		src/utils/texture/handler_texture_color.c \
 		src/utils/texture/handler_texture_path.c \
 		src/utils/map/map_handler.c \
+		src/utils/map/map_validator.c \
 		src/utils/allGood.c
 		
 
@@ -48,7 +49,11 @@ HELPERS =	src/utils/help/array2d.c \
 			src/utils/help/is_space.c \
 			src/utils/help/match_count.c \
 			src/utils/help/capitalize.c \
-			src/utils/help/serialize.c
+			src/utils/help/serialize.c \
+			src/utils/help/transform.c \
+			src/utils/help/ft_realloc.c \
+			src/utils/help/normalize.c
+
 
 TEST =	src/test/test.c 
 

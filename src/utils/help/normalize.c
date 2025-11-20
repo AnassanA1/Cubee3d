@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   normalize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 16:06:00 by msidry           ###   ########.fr       */
+/*   Created: 2025/11/19 16:09:35 by msidry            #+#    #+#             */
+/*   Updated: 2025/11/20 11:06:19 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.h"
+#include "../../../include/main.h"
 
-static void leakCheck(void);
-int	main(int argc, char *argv[])
+
+char *normalize(char *str, size_t newsize, unsigned char toapp)
 {
-	t_game *game;
+    char *newstr;
+    size_t len;
 
-	game = NULL;
-	game_init(&game, argc, argv);
-	game_destroy(&game);
-	atexit(leakCheck);
-	return (0);
+    len = ft_strlen(str);
+    if (len + 1 == newsize)
+        return (str);
+    newstr = ft_realloc(str, len , newsize + 1);
+    if (!newstr)
+        return (nullstr(&str), NULL);
+    ft_memset(&newstr[len], toapp, newsize - len - 1);
+    return (newstr);
 }
 
-static void leakCheck(void)
-{
- 	system("leaks -q cube3D");
-}

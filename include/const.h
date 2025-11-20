@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:54:21 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/18 10:01:21 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/19 16:06:23 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,6 @@
 # define PATH "PATH"
 # define HEXASET "0123456789ABCDEFabcdef"
 # define DECISET "0123456789,"
+# define MAPSET "01NSEW "
+# define SPACES "\t\v\b\r \n"
 #endif
