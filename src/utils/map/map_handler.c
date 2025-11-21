@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 13:47:43 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/20 12:29:14 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/21 10:01:41 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void map_handler(t_game *ref)
     if (!isAllOk(ref))
         return ;
     init_map(ref);
-    //map_validator(ref);
+    map_validator(ref);
 }
 
 
@@ -62,6 +62,7 @@ static void normaize_width(t_map *map)
     idx = 0;
     while (map->map2d[idx])
     {
+        map->map2d[idx] = find_replace(map->map2d[idx], "\t", "    ", 1);
         len = ft_strlen(map->map2d[idx]);
         if (len > map->width)
             map->width = len;

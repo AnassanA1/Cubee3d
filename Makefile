@@ -101,7 +101,7 @@ fclean : clean
 
 # // TODO: Add program params for testing !
 
-PARAM = txt.cube
+PARAM = test.cub
 
 run : fclean $(NAME)
 	@echo $(RUNNING) $(NAME)

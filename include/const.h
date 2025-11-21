@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:54:21 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 16:06:23 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/21 09:35:49 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define CONST_H
 
 # define ARGS 2
-# define EXTENSION ".cube"
+# define EXTENSION ".cub"
 # define MAPLINE "\033[1;47m$MAPLINE\033[0m"
 # define CONFIG "\033[1;35mCONFIG :\033[0m \033[1;33m$CONFIG\033"
 # define NORTH "NO"

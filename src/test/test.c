@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:39:38 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 13:08:29 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/21 09:57:26 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,18 +82,18 @@ void print_map_grid(t_grid grid)
 
 void config_info(t_game *ref)
 {
-    echo("NORTH TEXTURE INFO :");
-    texture_info(&ref->textures.north_txt);
-    echo("SOUTH TEXTURE INFO :");
-    texture_info(&ref->textures.south_txt);
-    echo("EAST TEXTURE INFO :");
-    texture_info(&ref->textures.east_txt);
-    echo("WEST TEXTURE INFO :");
-    texture_info(&ref->textures.west_txt);
-    echo("SKY TEXTURE INFO :");
-    texture_info(&ref->textures.sky_txt);
-    echo("FLOOR TEXTURE INFO :");
-    texture_info(&ref->textures.floor_txt);
-    echo("GRID MAP INFO :");
+    // echo("NORTH TEXTURE INFO :");
+    // texture_info(&ref->textures.north_txt);
+    // echo("SOUTH TEXTURE INFO :");
+    // texture_info(&ref->textures.south_txt);
+    // echo("EAST TEXTURE INFO :");
+    // texture_info(&ref->textures.east_txt);
+    // echo("WEST TEXTURE INFO :");
+    // texture_info(&ref->textures.west_txt);
+    // echo("SKY TEXTURE INFO :");
+    // texture_info(&ref->textures.sky_txt);
+    // echo("FLOOR TEXTURE INFO :");
+    // texture_info(&ref->textures.floor_txt);
+    // echo("GRID MAP INFO :");
     print_map_grid(ref->map.map2d);
 }
