@@ -15,8 +15,9 @@ SRCS = $(SRCS_DIR)/main.c \
 	   $(SRCS_DIR)/parse_textures.c \
 	   $(SRCS_DIR)/map_validation.c \
 	   $(SRCS_DIR)/raycasting.c \
-	   $(SRCS_DIR)/drawing.c
-
+	   $(SRCS_DIR)/drawing.c \
+		$(SRCS_DIR)/dda.c \
+	$(SRCS_DIR)/keys.c  $(SRCS_DIR)/movements.c
 
 GNL_SRCS = $(GNL_DIR)/get_next_line.c \
            $(GNL_DIR)/get_next_line_utils.c

@@ -26,7 +26,6 @@ int	all_textures_loaded(t_game *game)
 		return (0);
 	return (1);
 }
-
 int	parse_file(char *filename, t_game *game)
 {
 	int	fd;

@@ -15,8 +15,12 @@ void	init_game(t_game *game)
 	game->textures.south_tex = NULL;
 	game->textures.west_tex = NULL;
 	game->textures.east_tex = NULL;
-	game->colors.floor_r = 20;
-	game->colors.ceil_r = 20;
+	game->colors.floor_r = -1;
+	game->colors.floor_g = -1;
+	game->colors.floor_b = -1;
+	game->colors.ceil_r = -1;
+	game->colors.ceil_g = -1;
+	game->colors.ceil_b = -1;
 	game->player.plane_x = 0;
 	game->player.plane_y = 0.66;
 }

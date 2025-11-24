@@ -81,16 +81,18 @@ int	parse_color(char *line, t_colors *colors, int is_ceiling)
 		line++;
 	line = skip_spaces(line);
 	b = ft_atoi(line);
-	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-		return (0);
 	if (is_ceiling)
-		colors->ceil_r = (r << 16) | (g << 8) | b;
+	{
+    	colors->ceil_r = r;
+    	colors->ceil_g = g;
+    	colors->ceil_b = b;
+	}
 	else
 	{
 		colors->floor_r = r;
 		colors->floor_g = g;
 		colors->floor_b = b;
-	}
+	}	
 	return (1);
 }
 
