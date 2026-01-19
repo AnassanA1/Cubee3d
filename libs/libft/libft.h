@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 02:30:25 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 13:19:48 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/16 09:45:31 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ t_list			*ft_lstlast(t_list *lst);
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*d)(void *));
 t_list			*ft_lstnew(void *content);
 int				ft_lstsize(t_list *lst);
-char			*get_next_line(int fd);
 int				ft_contain(const char *str, char c);
 
 #endif

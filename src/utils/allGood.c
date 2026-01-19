@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 18:17:13 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/17 15:35:37 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/12 11:51:40 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void mostBeGood(t_game **ref)
     {
         putError(getError(&(*ref)->error));
         game_destroy(ref);
-        exit(exitCode);
+        //exit(exitCode);
     }
 }
 bool isAllOk(t_game *ref)

@@ -5,7 +5,7 @@ NAME = cube3D
 CC = cc
 CFLAGS = -Wall -Werror -Wextra 
 CSTAGE = -c
-CFLAGS += -pedantic -fsanitize=address -g
+#CFLAGS += -pedantic -fsanitize=address -g
 
 MAIN = main.c
 INCLUDE = include/main.h include/const.h include/typedef.h include/error.h
@@ -15,7 +15,8 @@ DEPENDENCY = $(DEPENDENCY_PATH)/libft.a
 DEPENDENCY_NAME = ft
 DEPENDENCY_HEADER = $(DEPENDENCY_PATH)
 
-FRAMEWORKS = -ldl -lglfw -pthread -lm
+#FRAMEWORKS = -ldl -lglfw -pthread -lm
+FRAMEWORKS = -framework OpenGL -framework AppKit -L/Users/msidry/.brew/lib -lglfw
 MLXLIB_NAME = mlx42
 MLXLIB = -l$(MLXLIB_NAME) $(FRAMEWORKS)
 MLXLIB_DIR = libs/mlx/
@@ -40,11 +41,19 @@ SRCS =	src/utils/game_init.c \
 		src/utils/map/map_handler.c \
 		src/utils/map/map_validator.c \
 		src/utils/map/map_transform.c \
+		src/utils/game_loop.c \
+		src/utils/movements/handler.c \
+		src/utils/movements/rotate.c \
+		src/utils/movements/move.c \
+		src/utils/raycasting/raycasting.c \
+		src/utils/dda.c \
+		src/utils/drawing/drawing.c\
 		src/utils/allGood.c \
 		
 		
 
-HELPERS =	src/utils/help/array2d.c \
+HELPERS =	src/utils/help/get_next_line.c \
+			src/utils/help/array2d.c \
 			src/utils/help/concat3.c \
 			src/utils/help/contain_only.c \
 			src/utils/help/converter.c \
@@ -64,8 +73,8 @@ HELPERS =	src/utils/help/array2d.c \
 			src/utils/queue/q_push.c
 
 TEST =	src/test/test.c \
-		src/test/q_print.c \
-		src/test/mlx/init_mlx.c
+		src/test/q_print.c 
+#		src/test/mlx/init_mlx.c
 		 
 
 OBJS = $(MAIN:.c=.o) $(SRCS:.c=.o) $(HELPERS:.c=.o) $(TEST:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 13:47:43 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/21 10:01:41 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/12 08:33:50 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ static void set_height_width(t_map *map)
         if (len > map->width)
             map->width = len;
         idx++;
-        map->hight++;
+        map->height++;
     }
 }

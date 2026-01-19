@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:10:10 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 12:28:19 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/13 12:20:16 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void clean_scene(t_scene *scene);
 static void clean_error(t_error *error);
-static void clean_textures(t_gametxt *textures);
+static void clean_textures(t_textures *textures);
 static void clean_map(t_map *map);
 
 void game_destroy(t_game **ref)
@@ -46,22 +46,28 @@ static void clean_error(t_error *error)
     }
 }
 
-static void clean_textures(t_gametxt *textures)
+static void clean_textures(t_textures *textures)
 {
     if (textures)
     {
-        nullstr(&textures->south_txt.path);
-        nullstr(&textures->north_txt.path);
-        nullstr(&textures->east_txt.path);
-        nullstr(&textures->west_txt.path);
-        nullstr(&textures->floor_txt.path);
-        nullstr(&textures->sky_txt.path);
+        if (textures->south_txt.type == IMAGE)
+            nullstr(&textures->south_txt.texture.img_texture.path);
+        if (textures->north_txt.type == IMAGE)
+            nullstr(&textures->north_txt.texture.img_texture.path);
+        if (textures->east_txt.type == IMAGE)
+            nullstr(&textures->east_txt.texture.img_texture.path);
+        if (textures->west_txt.type == IMAGE)
+            nullstr(&textures->west_txt.texture.img_texture.path);
+        if (textures->floor_txt.type == IMAGE)
+            nullstr(&textures->floor_txt.texture.img_texture.path);
+        if (textures->sky_txt.type == IMAGE)
+            nullstr(&textures->sky_txt.texture.img_texture.path);
     }
 }
 
 static void clean_map(t_map *map)
 {
-    map->hight = 0;
+    map->height = 0;
     map->width = 0;
     nullarr2d((void ***)&map->map2d, str2dlen(map->map2d));
 }

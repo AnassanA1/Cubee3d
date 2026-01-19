@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:37:40 by msidry            #+#    #+#             */
-/*   Updated: 2025/12/21 17:11:17 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/19 16:15:55 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ void    q_pushQueue(void);
 void    q_popQueue(t_queue **queue);
 // void    q_empty(t_queue **queue);
 // bool    is_closed_bff(t_map *map, t_queue **queue);
+
 
 #endif

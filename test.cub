@@ -1,9 +1,9 @@
-NO #FF0000
-SO #00ff00
-WE #0000ff
-EA #ff00d0
-F 220,100,0
-C 225,30,0
+NO assets/64xxx64.png
+SO assets/64xx64.png
+WE assets/64xxx64.png
+EA assets/64xx64.png
+F 84,62,2
+C #0000ff
 
 
     1111111111111111111111111

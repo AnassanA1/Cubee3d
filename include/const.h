@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:54:21 by msidry            #+#    #+#             */
-/*   Updated: 2025/12/13 11:21:34 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/12 08:26:17 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define MAPSET "01NSEW "
 # define SPACES "\t\v\b\r \n"
 # define WIN_WIDTH 1920
-# define WIN_HIGHT 1080
-# define WIN_TITLE "Cube 3D" 
+# define WIN_HEIGHT 1080
+# define WIN_TITLE "Cube 3D"
+# define MOVE_SPEED 0.04
+# define ROT_SPEED 0.05
 #endif

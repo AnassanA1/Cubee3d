@@ -6,15 +6,15 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 15:16:19 by msidry            #+#    #+#             */
-/*   Updated: 2025/12/21 16:45:14 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/13 12:21:19 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
 
 
-static void valid_textures(t_error *error, t_gametxt *textuers);
-static int texture_config_handler(t_error *error, t_gametxt *txts, char *line);
+static void valid_textures(t_error *error, t_textures *textuers);
+static int texture_config_handler(t_error *error, t_textures *txts, char *line);
 
 void texture_handler(t_game *ref)
 {
@@ -38,7 +38,7 @@ void texture_handler(t_game *ref)
 }
 
 
-static int texture_config_handler(t_error *error, t_gametxt *txts, char *line)
+static int texture_config_handler(t_error *error, t_textures *txts, char *line)
 {
     static char     *identifiers[6];
     static callconfi callbacks[6] ;
@@ -68,7 +68,7 @@ static int texture_config_handler(t_error *error, t_gametxt *txts, char *line)
 }
 
 
-static void valid_textures(t_error *error, t_gametxt *textuers)
+static void valid_textures(t_error *error, t_textures *textuers)
 {
     char *notset;
 

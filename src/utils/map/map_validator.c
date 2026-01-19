@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 13:54:25 by msidry            #+#    #+#             */
-/*   Updated: 2025/12/21 17:21:58 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/12 08:34:07 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ static bool closed_map(t_error *error, t_map *map)
         x = 0;
         while (map->map2d[y][x])
         {
-            if (x == 0 || x == map->width - 1 || y == 0 || y == map->hight - 1)
+            if (x == 0 || x == map->width - 1 || y == 0 || y == map->height - 1)
                 q_push(&queue, q_create(map->map2d[y][x], x, y));
             x++;
         }

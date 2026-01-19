@@ -20,5 +20,6 @@
 # define BAD_C_MAP "\033[1;31mError: Map has to be closed with walls, a.k.a {1}!\033[0m"
 # define BAD_P_MAP "\033[1;31mError: Make no sense to have empty space in path !\033[0m"
 # define ERROR_DUP "\033[1;31mError: $TXT Duplicate texture !\033[0m"
-
+# define ERROR_ITXT "\033[1;31mError: $TXTWall Texture can only be image format !\033[0m"
+# define ERROR_CTXT "\033[1;31mError: $TXTsky and floor can only be solid color !\033[0m"
 #endif

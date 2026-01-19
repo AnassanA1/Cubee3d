@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handler_texture_path.c                             :+:      :+:    :+:   */
+/*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 12:37:43 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/13 11:18:32 by msidry           ###   ########.fr       */
+/*   Created: 2026/01/12 08:06:29 by msidry            #+#    #+#             */
+/*   Updated: 2026/01/12 08:07:48 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/main.h"
+#include "../../include/main.h"
 
-void path_handler(t_error *error, t_texture *texture, char *path)
+void	game_loop(void *param)
 {
-    (void)error;
-    texture->type = IMAGE;
-    nullstr(&texture->texture.img_texture.path);
-    texture->texture.img_texture.path = ft_strtrim(path, "\t \r\b\n\v");
-    texture->is_set = true;
+	movement_handler((t_game *)param);
+	raycasting((t_game *)param);
 }

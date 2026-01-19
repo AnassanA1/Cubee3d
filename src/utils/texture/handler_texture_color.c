@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:41:23 by msidry            #+#    #+#             */
-/*   Updated: 2025/12/21 16:43:15 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/13 11:17:45 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 static bool valid_rgba(char *color);
 static bool valid_hexa(char *color);
+static char **split_trim(char *set, char sep, char *trimed);
 
 void rgba_handler(t_error *error, t_texture *texture, char *rgbacolor)
 {
@@ -36,7 +37,7 @@ void rgba_handler(t_error *error, t_texture *texture, char *rgbacolor)
         return ;
     }
     texture->type = SOLID;
-    texture->rgba = rgbatoint(color);
+    texture->texture.rgba = rgbatoint(color);
     texture->is_set = true;
     nullstr(&color);
 }
@@ -44,28 +45,23 @@ void rgba_handler(t_error *error, t_texture *texture, char *rgbacolor)
 
 static bool valid_rgba(char *color)
 {
-    int len;
     int idx;
-    int jdx;
+    size_t len;
+    len = 0;
     char **rgba;
-    if (!color || !*color)
+    rgba = split_trim(color, ',', SPACES);
+    if (!rgba)
         return (false);
-    rgba = ft_split(color, ',');
+    while (rgba[len])len++;
     idx = -1;
     while (rgba[++idx])
     {
-        len = -1;
-        jdx = -1;
-        while (is_space(rgba[idx][++jdx]));
-        while (rgba[idx][++len + jdx])
-        {
-            if (!ft_isdigit(rgba[idx][jdx + len]))
-                break;
-        }
-        if (len == 0 || len > 4 ||
-         ft_strncmp(color, "255", 3) > 0 ||
-         !contain_only(&rgba[idx][jdx + len], SPACES))
-            return false;
+        if (ft_strlen(rgba[idx]) > 3 || len != 4)
+            return (nullarr2d((void ***)&rgba, len), false);
+        if (!contain_only(rgba[idx], DECISET))
+            return (nullarr2d((void ***)&rgba, len), false);
+        if (ft_strlen(rgba[idx]) == 3 && ft_strncmp(rgba[idx], "255", 4) > 0)
+            return (nullarr2d((void ***)&rgba, len), false);
     }
     return (nullarr2d((void ***)&rgba, idx), true);
 }
@@ -92,7 +88,7 @@ void hexa_handler(t_error *error, t_texture *texture, char *hexacolor)
     else
         color = concat3(capitalize(hexacolor), NULL, NULL, 1);
     texture->type = SOLID;
-    texture->rgba = hexatoint(color);
+    texture->texture.rgba = hexatoint(color);
     texture->is_set = true;
     nullstr(&color);
 }
@@ -109,4 +105,33 @@ static bool valid_hexa(char *color)
     if (!contain_only(color, HEXASET))
         return (false);
     return (true);
+}
+
+
+static char **split_trim(char *set, char sep, char *trimed)
+{
+    char **result;
+    char *tmp;
+    int idx;
+    size_t len;
+
+    idx = 0;
+    len = -1;
+    if (!set || !*set || !trimed || match_count(set, ',') > 3)
+        return (NULL);
+    result = ft_split(set, sep);
+    if (!result)
+        return (NULL);
+    while (result[++len])
+        ;
+    while (result[idx])
+    {
+        tmp = ft_strtrim(result[idx], trimed);
+        if (!tmp || !*tmp)
+            return (free(tmp), nullarr2d((void ***)&result, len), NULL);
+        free(result[idx]);
+        result[idx] = tmp;
+        idx++;
+    }
+    return (result);
 }

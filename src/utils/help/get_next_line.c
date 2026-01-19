@@ -6,11 +6,11 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 17:40:43 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 13:19:33 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/16 09:48:14 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../include/main.h"
 
 static char	*ft_read_full_line(int fd, char *buffer);
 static char	*ft_merge_buffers(char *oldbuffer, char *newbuffer);

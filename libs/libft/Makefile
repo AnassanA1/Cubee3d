@@ -48,8 +48,7 @@ SRCS = \
 	   ft_lstclear_bonus.c \
 	   ft_lstiter_bonus.c \
 	   ft_lstmap_bonus.c \
-	   ft_contain.c \
-	   get_next_line.c
+	   ft_contain.c 
 
 OBJS = $(SRCS:.c=.o)
 ARFLAGS = rcs

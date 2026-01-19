@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2025/12/21 17:11:21 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/19 16:15:12 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdbool.h>
 # include <string.h>
 # include <errno.h>
+# include <math.h>
 # include "../libs/mlx/MLX42.h"
 
 // CUSTOM HEADERS
@@ -57,12 +58,12 @@ int         is_map_config(char *line);
 
 // TEXTURES 
 void	texture_handler(t_game *ref);
-void	set_south_texture(t_error *err, t_gametxt *textures, char *line);
-void	set_north_texture(t_error *err, t_gametxt *textures, char *line);
-void	set_east_texture(t_error *err, t_gametxt *textures, char *line);
-void	set_west_texture(t_error *err, t_gametxt *textures, char *line);
-void	set_sky_texture(t_error *err, t_gametxt *textures, char *line);
-void	set_floor_texture(t_error *err, t_gametxt *textures, char *line);
+void	set_south_texture(t_error *err, t_textures *textures, char *line);
+void	set_north_texture(t_error *err, t_textures *textures, char *line);
+void	set_east_texture(t_error *err, t_textures *textures, char *line);
+void	set_west_texture(t_error *err, t_textures *textures, char *line);
+void	set_sky_texture(t_error *err, t_textures *textures, char *line);
+void	set_floor_texture(t_error *err, t_textures *textures, char *line);
 void    texture_format_handler(t_error * error, t_texture *target, char *line);
 void    rgba_handler (t_error *error, t_texture *texture, char *rgbacolor);
 void    hexa_handler(t_error *error, t_texture *texture, char *hexacolor);
@@ -70,6 +71,7 @@ void    path_handler(t_error *error, t_texture *texture, char *path);
 
 
 // HELPER
+char    *get_next_line(int fd);
 char	*concat3(char *str1, char *str2, char *sep, int tofree);
 char	*find_replace(char *src, char *target, char *new, int usefree);
 int     is_space(int c);
@@ -87,7 +89,38 @@ char    **trim_tail_empty(char **arr);
 void    transform(char *str, const char *set, int c);
 void    *ft_realloc(void *ptr, size_t oldsize, size_t newsize);
 char    *normalize(char *str, size_t newsize, unsigned char toapp);
-void **alloc2darr(size_t elem, size_t items, size_t itemsize);
+void    **alloc2darr(size_t elem, size_t items, size_t itemsize);
+
+//movements.c
+void	movement_handler(t_game *game);
+void	move_forward(t_game *game);
+void	move_backward(t_game *game);
+void	rotate_left(t_game *game);
+void	rotate_right(t_game *game);
+void	strafe_right(t_game *game);
+void	strafe_left(t_game *game);
+
+
+// main
+
+void	game_loop(void *param);
+//drawing.c
+void    put_pixel(mlx_image_t *img, int x, int y, int color);
+void    draw_floor_ceilling(t_game *game);
+int	    get_wall_color(t_textures *txt, int side, int step_x, int step_y);
+
+//raycasting.c
+void raycasting(t_game *game);
+void cast_ray(t_game *game, int x);
+
+//dda.c
+void    performing_dda(t_game *game, t_ray *ray, t_dda *dda, t_wall *wall);
+// double  get_perpendular(t_game *game, t_ray *ray, t_wall *wall);
+double  get_perpendular(t_wall *wall, t_dda *data);
+void draw_wall(t_game *game, int x, t_wall *wall, int line_height);
+//void draw_wall(t_game *game, int x, t_wall *wall, t_ray *ray);
+int	calculate_line_height(double perp_wall_dist);
+
 
 // QUEUE
 t_queue *q_create(unsigned char c, int x, int y);

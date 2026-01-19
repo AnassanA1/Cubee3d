@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 18:44:01 by msidry            #+#    #+#             */
-/*   Updated: 2025/12/13 11:10:11 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/12 10:13:02 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void texture_format_handler(t_error * error, t_texture *target, char *line)
     callformat callback;
 
     format = extract_format(line + is_map_config(line));
+    
     callback = mapper(format);
     if (!format || !callback)
     {
