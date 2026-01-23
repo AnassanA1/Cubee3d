@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: anasszgh <anasszgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 13:54:25 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/12 08:34:07 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/22 06:51:18 by anasszgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,32 @@ static bool supported_line(t_error *error,char *line);
 static bool one_direction(t_error *error, char **arr);
 static bool closed_map(t_error *error, t_map *map);
 static bool space_in_path(t_error *error, t_map *map);
+
 void map_validator(t_game *ref)
 {
-    size_t  idx;
-    idx = 0;
-    if (!isAllOk(ref))
-        return ;
-    if (!one_direction(&ref->error, ref->map.map2d))
-        return ;
-    while (ref->map.map2d[idx])
-    {
-        if (empty_line(&ref->error, ref->map.map2d[idx]))
-            return ;
-        if (!supported_line(&ref->error, ref->map.map2d[idx]))
-            return ;
-        idx++;
-    }
+	size_t	idx;
 
-    normaize_width(&ref->map, ' ');
-    closed_map(&ref->error, &ref->map);
-    space_in_path(&ref->error, &ref->map);
+	idx = 0;
+	if (!isAllOk(ref))
+		return ;
+	if (!one_direction(&ref->error, ref->map.map2d))
+		return ;
+	while (ref->map.map2d[idx])
+	{
+		if (empty_line(&ref->error, ref->map.map2d[idx]))
+			return ;
+		if (!supported_line(&ref->error, ref->map.map2d[idx]))
+			return ;
+		idx++;
+	}
+	normaize_width(&ref->map, ' ');
+	if (!isAllOk(ref))
+		return ;
+	if (!closed_map(&ref->error, &ref->map))
+		return ;
+	if (!isAllOk(ref))
+		return ;
+	space_in_path(&ref->error, &ref->map);
 }
 
 

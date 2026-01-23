@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: anasszgh <anasszgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/19 16:15:12 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/22 13:02:14 by anasszgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ int         is_map_config(char *line);
 
 // TEXTURES 
 void	texture_handler(t_game *ref);
+int		get_texture_pixel(mlx_image_t *texture, int x, int y);
+void	calculate_tex_x(t_game *game, t_ray *ray, t_wall *wall);
+mlx_image_t	*select_texture(t_textures *txt, int side, int sx, int sy);
+// SETTERS FOR TEXTURES
 void	set_south_texture(t_error *err, t_textures *textures, char *line);
 void	set_north_texture(t_error *err, t_textures *textures, char *line);
 void	set_east_texture(t_error *err, t_textures *textures, char *line);

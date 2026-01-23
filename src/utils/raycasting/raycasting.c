@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: anasszgh <anasszgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:13:48 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/19 16:16:14 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/22 13:02:03 by anasszgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
-
-
 
 void    raycasting(t_game *game)
 {
@@ -70,17 +68,43 @@ void    init_step(t_ray *ray, t_wall *wall)
         wall->step_y = 1;
 }
 
-void    cast_ray(t_game *game, int x)
+void	calculate_tex_x(t_game *game, t_ray *ray, t_wall *wall)
 {
-    t_ray   ray;
-    t_wall  wall;
-    t_dda   data;
-    double  perpen_dis;
+	mlx_image_t	*texture;
+	double		wall_x;
 
-    init_ray(game, &ray, x);
-    init_dda(game, &ray, &data);
-    init_step(&ray, &wall);
-    performing_dda(game, &ray, &data, &wall);
-    perpen_dis = get_perpendular(&wall, &data);
-    draw_wall(game, x, &wall, calculate_line_height(perpen_dis));
+	if (wall->side == 0)
+		wall_x = game->player.pos.y + wall->perp_dist * ray->dir.y;
+	else
+		wall_x = game->player.pos.x + wall->perp_dist * ray->dir.x;
+	wall_x -= floor(wall_x);
+	texture = select_texture(&game->textures, wall->side,
+			wall->step_x, wall->step_y);
+	if (texture)
+		wall->tex_x = (int)(wall_x * (double)texture->width);
+	else
+		wall->tex_x = 0;
+	if ((wall->side == 0 && ray->dir.x > 0)
+		|| (wall->side == 1 && ray->dir.y < 0))
+	{
+		if (texture)
+			wall->tex_x = texture->width - wall->tex_x - 1;
+	}
+}
+
+void	cast_ray(t_game *game, int x)
+{
+	t_ray	ray;
+	t_wall	wall;
+	t_dda	data;
+	double	perpen_dis;
+
+	init_ray(game, &ray, x);
+	init_dda(game, &ray, &data);
+	init_step(&ray, &wall);
+	performing_dda(game, &ray, &data, &wall);
+	perpen_dis = get_perpendular(&wall, &data);
+	wall.perp_dist = perpen_dis;
+	calculate_tex_x(game, &ray, &wall);
+	draw_wall(game, x, &wall, calculate_line_height(perpen_dis));
 }

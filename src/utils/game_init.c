@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: anasszgh <anasszgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 14:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/19 15:34:00 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/22 06:21:05 by anasszgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,30 +124,30 @@ static void set_player_direction(t_game *game, int dir)
 	}
 }
 
-void load_texture(t_game *ref)
+void	load_texture(t_game *ref)
 {
-    int idx;
-    mlx_texture_t *raw;
-    t_texture *txts[6];
-    if (!ref || !isAllOk(ref))
-        return;
+	int				idx;
+	mlx_texture_t	*raw;
+	t_texture		*txts[4];
 
-    txts[0] = &ref->textures.east_txt;
-    txts[1] = &ref->textures.west_txt;
-    txts[2] = &ref->textures.south_txt;
-    txts[3] = &ref->textures.north_txt;
-    txts[4] = &ref->textures.floor_txt;
-    txts[5] = &ref->textures.sky_txt;
-	
-    idx = -1;
-    while (++idx < 6)
-    {
-		if (txts[idx]->type == !IMAGE)
-			continue;
-        raw = mlx_load_png(txts[idx]->texture.img_texture.path);
-        if (!raw)
-        	fprintf(stderr, "Failed to load PNG\n");
-        txts[idx]->texture.img_texture.txt = mlx_texture_to_image(ref->display.mlx, raw);
-        mlx_delete_texture(raw);
-    }
+	if (!ref || !isAllOk(ref))
+		return ;
+	txts[0] = &ref->textures.north_txt;
+	txts[1] = &ref->textures.south_txt;
+	txts[2] = &ref->textures.east_txt;
+	txts[3] = &ref->textures.west_txt;
+	idx = -1;
+	while (++idx < 4)
+	{
+		if (txts[idx]->type != IMAGE)
+			continue ;
+		raw = mlx_load_png(txts[idx]->texture.img_texture.path);
+		if (!raw)
+			exit(fprintf(stderr, "Error: Failed to load texture\n"));
+		txts[idx]->texture.img_texture.txt = mlx_texture_to_image(
+				ref->display.mlx, raw);
+		mlx_delete_texture(raw);
+		if (!txts[idx]->texture.img_texture.txt)
+			exit(fprintf(stderr, "Error: Failed to convert texture\n"));
+	}
 }

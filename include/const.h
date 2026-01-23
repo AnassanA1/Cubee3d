@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   const.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: anasszgh <anasszgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:54:21 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/12 08:26:17 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/22 06:30:09 by anasszgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,23 @@
 # define DECISET "0123456789"
 # define MAPSET "01NSEW "
 # define SPACES "\t\v\b\r \n"
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 1200
+# define WIN_HEIGHT 720
 # define WIN_TITLE "Cube 3D"
 # define MOVE_SPEED 0.04
 # define ROT_SPEED 0.05
+# define WIN_WIDTH 1200
+# define WIN_HEIGHT 720
+# define WIN_TITLE "Cube 3D"
+# define MOVE_SPEED 0.04
+# define ROT_SPEED 0.05
+// minimap.
+# define MINIMAP_SIZE 200
+# define MINIMAP_MARGIN 20
+# define MINIMAP_TILE_SIZE 10
+# define MINIMAP_PLAYER_SIZE 4
+# define MINIMAP_BG 0x000000FF
+# define MINIMAP_WALL 0xFFFFFFFF
+# define MINIMAP_EMPTY 0x333333FF
+# define MINIMAP_PLAYER 0xFF0000FF
 #endif

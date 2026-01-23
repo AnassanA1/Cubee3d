@@ -3,89 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: anasszgh <anasszgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:23:09 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/17 11:53:53 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/22 06:21:47 by anasszgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
 
-void    put_pixel(mlx_image_t *img, int x, int y, int color)
+void	put_pixel(mlx_image_t *img, int x, int y, int color)
 {
-    int index;
+	int	index;
 
-    if (x < 0 || x >= (int)img->width || y < 0 || y >= (int)img->height)
-        return ;
-    index = (y * img->width + x) * 4; // to find the correct pixel position * 4 (RGBA)
-    img->pixels[index] = (color >> 24) & 0xFF; // Red component
-    img->pixels[index + 1] = (color >> 16) & 0xFF; // Green component
-    img->pixels[index + 2] = (color >> 8)& 0xFF; // Blue component
-    img->pixels[index + 3] = color & 0xFF; // Alpha component
+	if (x < 0 || x >= (int)img->width || y < 0 || y >= (int)img->height)
+		return ;
+	index = (y * img->width + x) * 4;
+	img->pixels[index] = (color >> 24) & 0xFF;
+	img->pixels[index + 1] = (color >> 16) & 0xFF;
+	img->pixels[index + 2] = (color >> 8) & 0xFF;
+	img->pixels[index + 3] = color & 0xFF;
 }
 
-int	get_wall_color(t_textures *txt, int side, int step_x, int step_y)
+int	get_texture_pixel(mlx_image_t *texture, int x, int y)
 {
-	(void)txt;
+	int	idx;
+	int	r;
+	int	g;
+	int	b;
+
+	if (!texture || x < 0 || x >= (int)texture->width
+		|| y < 0 || y >= (int)texture->height)
+		return (0xFF00FFFF);
+	idx = (y * texture->width + x) * 4;
+	r = texture->pixels[idx];
+	g = texture->pixels[idx + 1];
+	b = texture->pixels[idx + 2];
+	return ((r << 24) | (g << 16) | (b << 8) | 0xFF);
+}
+
+mlx_image_t	*select_texture(t_textures *txt, int side, int sx, int sy)
+{
 	if (side == 0)
 	{
-		if (step_x > 0)
-			return (0xFF0000FF);
+		if (sx > 0)
+			return (txt->east_txt.texture.img_texture.txt);
 		else
-			return (0xFFFF00FF);
+			return (txt->west_txt.texture.img_texture.txt);
 	}
 	else
 	{
-		if (step_y > 0)
-			return (0x00FFFFFF);
+		if (sy > 0)
+			return (txt->south_txt.texture.img_texture.txt);
 		else
-			return (0xFF00FFFF);
+			return (txt->north_txt.texture.img_texture.txt);
 	}
 }
 
-void    draw_floor_ceilling(t_game *game)
+void	draw_floor_ceilling(t_game *game)
 {
-    int x;
-    int y;
-	y = 0;
-    while (y < WIN_HEIGHT)
-    {
-        x = 0;
-        while (x < WIN_WIDTH)
-        {
-            if (y < WIN_HEIGHT / 2)
-				put_pixel(game->display.img, x, y, game->textures.sky_txt.texture.rgba);
-			else
-				put_pixel(game->display.img, x, y, game->textures.floor_txt.texture.rgba);
-            x++;
-        }
-        y++;
-    }
-}
-
-
-
- void	draw_wall(t_game *game, int x, t_wall *wall, int line_height)
-{
-	int	draw_start;
-	int	draw_end;
+	int	x;
 	int	y;
-	int	color;
 
-	draw_start = -line_height / 2 + WIN_HEIGHT / 2;
-	if (draw_start < 0)
-		draw_start = 0;
-	draw_end = line_height / 2 + WIN_HEIGHT / 2;
-	if (draw_end >= WIN_HEIGHT)
-		draw_end = WIN_HEIGHT - 1;
-	color = get_wall_color(&game->textures, wall->side, wall->step_x, wall->step_y);
-	y = draw_start;
-	while (y < draw_end)
+	y = 0;
+	while (y < WIN_HEIGHT)
 	{
-		put_pixel(game->display.img, x, y, color);
+		x = 0;
+		while (x < WIN_WIDTH)
+		{
+			if (y < WIN_HEIGHT / 2)
+				put_pixel(game->display.img, x, y,
+					game->textures.sky_txt.texture.rgba);
+			else
+				put_pixel(game->display.img, x, y,
+					game->textures.floor_txt.texture.rgba);
+			x++;
+		}
 		y++;
 	}
 }
-
-

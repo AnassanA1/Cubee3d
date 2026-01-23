@@ -1,7 +1,4 @@
 NAME = cube3D
-
-
-
 CC = cc
 CFLAGS = -Wall -Werror -Wextra 
 CSTAGE = -c
@@ -16,7 +13,7 @@ DEPENDENCY_NAME = ft
 DEPENDENCY_HEADER = $(DEPENDENCY_PATH)
 
 #FRAMEWORKS = -ldl -lglfw -pthread -lm
-FRAMEWORKS = -framework OpenGL -framework AppKit -L/Users/msidry/.brew/lib -lglfw
+FRAMEWORKS = -framework OpenGL -framework AppKit -L/opt/homebrew/lib -lglfw
 MLXLIB_NAME = mlx42
 MLXLIB = -l$(MLXLIB_NAME) $(FRAMEWORKS)
 MLXLIB_DIR = libs/mlx/
@@ -48,6 +45,7 @@ SRCS =	src/utils/game_init.c \
 		src/utils/raycasting/raycasting.c \
 		src/utils/dda.c \
 		src/utils/drawing/drawing.c\
+		src/utils/drawing/drawing_utils.c \
 		src/utils/allGood.c \
 		
 		
