@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 14:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/19 15:34:00 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/22 10:58:49 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void init_player(t_game *ref)
 		{
 			if (ref->map.map2d[y][x] > '1')
 			{
-				ref->player.pos.x = x + 0.5; // why 0,5 ? each grid cell is 1 unit wide, so to place the player in the center of the cell we add 0.5
+				ref->player.pos.x = x + 0.5;
 				ref->player.pos.y = y + 0.5;
 				set_player_direction(ref, ref->map.map2d[y][x]);
 				return ;
