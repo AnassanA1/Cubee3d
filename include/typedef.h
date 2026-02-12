@@ -6,34 +6,41 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:14:02 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/17 12:06:39 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/12 10:29:10 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
 
-typedef unsigned int t_uint;
-typedef char ** t_grid;
+typedef unsigned int	t_uint;
+typedef char**			t_grid;
 
 typedef struct s_error
 {
-    int stat;
-    char *message;
-} t_error;
+	int		stat;
+	char	*message;
+}	t_error;
+
+
+typedef struct s_confile
+{
+    t_list *conflist;
+    t_list *maplist;
+}   t_confile;
 
 typedef struct s_scene
 {
-    int fd;
-    char *path;
-    t_list *rawmap;
-} t_scene;
+	int		fd;
+	char	*path;
+	t_list	*rawmap;
+}	t_scene;
 
 typedef enum e_texture_type
 {
-    SOLID,
-    IMAGE,
-} t_txttype;
+	SOLID,
+	IMAGE,
+}	t_txttype;
 
 typedef struct s_imgtxt
 {
@@ -126,6 +133,7 @@ typedef struct s_container
 {
     int argc;
     char **argv;
+    t_confile configfile;
     t_scene scene;
     t_error error;
     t_map  map;

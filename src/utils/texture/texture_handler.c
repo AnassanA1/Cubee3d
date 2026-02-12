@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 15:16:19 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/13 12:21:19 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/12 12:40:06 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,17 @@ void texture_handler(t_game *ref)
     t_list *list;
     char *line;
 
-    if (!isAllOk(ref))
-        return ;
-    list = ref->scene.rawmap;
+
+    list = ref->configfile.conflist;
     while (list)
     {
         line = (char *)list->content;
-        if (is_map_config(line))
-        {
-            if (texture_config_handler(&ref->error, &ref->textures, line))
-                return;
-        }
+        if (texture_config_handler(&ref->error, &ref->textures, line))
+            return;
         list = list->next;
     }
     valid_textures(&ref->error, &ref->textures);
 }
-
 
 static int texture_config_handler(t_error *error, t_textures *txts, char *line)
 {

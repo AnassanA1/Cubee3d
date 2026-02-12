@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/19 16:15:12 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/12 11:10:45 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@
 # include "test.h"
 
 // INIT GAME 
-void game_init(t_game **ref, int argc, char *argv[]);
-void game_destroy(t_game **ref);
+void game_init(t_game *ref, int argc, char *argv[]);
+void game_destroy(t_game *ref);
+void game_run(t_game *ref);
+
 
 // ERROR HANDLING
 void		setError(t_error *error, char *msg);
@@ -40,8 +42,9 @@ int         getStat(t_error *error);
 void		putError(char *msg);
 
 // VALIDATION
-void		input_handler(t_game *ref);
-void		mostBeGood(t_game **ref);
+void        input_validator(int argc, char **argv);
+//void		input_handler(t_game *ref);
+void		mostBeGood(t_game *ref);
 bool		isAllOk(t_game *ref);
 
 // MAP && scene
@@ -51,8 +54,8 @@ void        normaize_width(t_map *map, unsigned char toapp);
 
 
 //  CONFIG 
-void        config_handler(t_game *ref);
-void		read_raw_config(t_game *ref);
+void        config_handler(t_game *ref, char *file);
+void		read_raw_config(t_game *ref, char *);
 int         is_map_config(char *line);
 
 

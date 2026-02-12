@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 13:54:25 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/12 08:34:07 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/12 12:44:51 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void map_validator(t_game *ref)
             return ;
         idx++;
     }
-
     normaize_width(&ref->map, ' ');
     closed_map(&ref->error, &ref->map);
     space_in_path(&ref->error, &ref->map);

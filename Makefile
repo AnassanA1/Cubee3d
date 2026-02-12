@@ -22,9 +22,10 @@ MLXLIB = -l$(MLXLIB_NAME) $(FRAMEWORKS)
 MLXLIB_DIR = libs/mlx/
 
 SRCS =	src/utils/game_init.c \
+		src/utils/game_run.c \
 		src/utils/game_destroy.c \
 		src/utils/error/error_helpers.c \
-		src/utils/input/input_handler.c \
+		src/utils/input/input_validator.c \
 		src/utils/config/config_handler.c \
 		src/utils/config/read_raw_config.c \
 		src/utils/config/is_map_config.c \

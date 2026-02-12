@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 18:53:59 by msidry            #+#    #+#             */
-/*   Updated: 2025/12/21 15:53:39 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/12 11:10:37 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,22 @@
 static int map_start(char *line);
 static void manage_line(t_scene *scene, char *rawline);
 
-void read_raw_config(t_game *ref)
+void read_raw_config(t_game *ref, char *file)
 {
     char *rawline;
+    int fd;
 
+    fd = open(file, O_RDONLY);
     while (true)
     {
-        rawline = get_next_line(ref->scene.fd);
+        rawline = get_next_line(fd);
         if (!rawline)
             break;
         manage_line(&ref->scene, rawline);
         free(rawline);
     }
-    close(ref->scene.fd);
-    ref->scene.fd = -1;
+    close(fd);
+    fd = -1;
     if (!ref->scene.rawmap)
     {
         setError(&ref->error, EMPTY_CONF);
