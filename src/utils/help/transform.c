@@ -12,24 +12,24 @@
 
 #include "../../../include/main.h"
 
-void  transform(char *str, const char *set, int c)
+void	transform(char *str, const char *set, int c)
 {
-    size_t idx;
+	size_t	idx;
 
-    if (!str || !set)
-        return ;
-    while (*str)
-    {
-        idx = 0;
-        while (set[idx])
-        {
-            if (*str == set[idx])
-            {
-                *str = c;
-                break;
-            }
-            idx++;
-        }
-        str++;
-    }
+	if (!str || !set)
+		return ;
+	while (*str)
+	{
+		idx = 0;
+		while (set[idx])
+		{
+			if (*str == set[idx])
+			{
+				*str = c;
+				break ;
+			}
+			idx++;
+		}
+		str++;
+	}
 }

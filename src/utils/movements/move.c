@@ -19,7 +19,6 @@ void	move_forward(t_game *game)
 
 	new_x = game->player.pos.x + game->player.dir.x * MOVE_SPEED;
 	new_y = game->player.pos.y + game->player.dir.y * MOVE_SPEED;
-	
 	if (game->map.map2d[(int)game->player.pos.y][(int)new_x] != '1')
 		game->player.pos.x = new_x;
 	if (game->map.map2d[(int)new_y][(int)game->player.pos.x] != '1')
@@ -33,7 +32,6 @@ void	move_backward(t_game *game)
 
 	new_x = game->player.pos.x - game->player.dir.x * MOVE_SPEED;
 	new_y = game->player.pos.y - game->player.dir.y * MOVE_SPEED;
-	
 	if (game->map.map2d[(int)game->player.pos.y][(int)new_x] != '1')
 		game->player.pos.x = new_x;
 	if (game->map.map2d[(int)new_y][(int)game->player.pos.x] != '1')
@@ -47,7 +45,6 @@ void	strafe_left(t_game *game)
 
 	new_x = game->player.pos.x - game->player.dir.y * MOVE_SPEED;
 	new_y = game->player.pos.y + game->player.dir.x * MOVE_SPEED;
-	
 	if (game->map.map2d[(int)game->player.pos.y][(int)new_x] != '1')
 		game->player.pos.x = new_x;
 	if (game->map.map2d[(int)new_y][(int)game->player.pos.x] != '1')
@@ -61,7 +58,6 @@ void	strafe_right(t_game *game)
 
 	new_x = game->player.pos.x + game->player.dir.y * MOVE_SPEED;
 	new_y = game->player.pos.y - game->player.dir.x * MOVE_SPEED;
-	
 	if (game->map.map2d[(int)game->player.pos.y][(int)new_x] != '1')
 		game->player.pos.x = new_x;
 	if (game->map.map2d[(int)new_y][(int)game->player.pos.x] != '1')

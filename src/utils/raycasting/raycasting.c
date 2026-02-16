@@ -3,69 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anasszgh <anasszgh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azghibat <azghibat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:13:48 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/22 13:02:03 by anasszgh         ###   ########.fr       */
+/*   Updated: 2026/02/16 10:35:55 by azghibat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
 
-void    raycasting(t_game *game)
+void	raycasting(t_game *game)
 {
-    int x;
+	int	x;
 
-    draw_floor_ceilling(game);
-    x = 0;
-    while (x < WIN_WIDTH)
-    {
-        cast_ray(game, x);
-        x++;
-    }
+	draw_floor_ceilling(game);
+	x = 0;
+	while (x < WIN_WIDTH)
+	{
+		cast_ray(game, x);
+		x++;
+	}
 }
 
-void    init_ray(t_game *game, t_ray *ray, int x)
+void	init_ray(t_game *game, t_ray *ray, int x)
 {
-    ray->camera_x = 2 * x / (double)WIN_WIDTH - 1;
-    ray->dir.x = game->player.dir.x + game->player.plane.x * ray->camera_x;
-    ray->dir.y = game->player.dir.y + game->player.plane.y * ray->camera_x;
-    ray->map_x = (int)game->player.pos.x; 
-    ray->map_y = (int)game->player.pos.y; 
+	ray->camera_x = 2 * x / (double)WIN_WIDTH - 1;
+	ray->dir.x = game->player.dir.x + game->player.plane.x * ray->camera_x;
+	ray->dir.y = game->player.dir.y + game->player.plane.y * ray->camera_x;
+	ray->map_x = (int)game->player.pos.x;
+	ray->map_y = (int)game->player.pos.y;
 }
 
-void    init_dda(t_game *game, t_ray *ray, t_dda *data)
+void	init_step(t_ray *ray, t_wall *wall)
 {
-    if (ray->dir.x == 0)
-        data->delta_dist_x = 1e20;
-    else
-        data->delta_dist_x = fabs(1 / ray->dir.x);
-    
-    if (ray->dir.y == 0)
-        data->delta_dist_y = 1e20;
-    else
-        data->delta_dist_y = fabs(1 / ray->dir.y);
-    if (ray->dir.x < 0)
-        data->side_dist_x = (game->player.pos.x - ray->map_x) * data->delta_dist_x;
-    else
-        data->side_dist_x = (ray->map_x + 1.0 - game->player.pos.x) * data->delta_dist_x;
-    if (ray->dir.y < 0)
-        data->side_dist_y = (game->player.pos.y - ray->map_y) * data->delta_dist_y;
-    else
-        data->side_dist_y = (ray->map_y + 1.0 - game->player.pos.y) * data->delta_dist_y;
-}
-
-void    init_step(t_ray *ray, t_wall *wall)
-{
-    wall->hit = 0;
-    if (ray->dir.x < 0)
-        wall->step_x = -1;
-    else
-        wall->step_x = 1;
-    if (ray->dir.y < 0)
-        wall->step_y = -1;
-    else
-        wall->step_y = 1;
+	wall->hit = 0;
+	if (ray->dir.x < 0)
+		wall->step_x = -1;
+	else
+		wall->step_x = 1;
+	if (ray->dir.y < 0)
+		wall->step_y = -1;
+	else
+		wall->step_y = 1;
 }
 
 void	calculate_tex_x(t_game *game, t_ray *ray, t_wall *wall)
@@ -78,14 +57,14 @@ void	calculate_tex_x(t_game *game, t_ray *ray, t_wall *wall)
 	else
 		wall_x = game->player.pos.x + wall->perp_dist * ray->dir.x;
 	wall_x -= floor(wall_x);
-	texture = select_texture(&game->textures, wall->side,
-			wall->step_x, wall->step_y);
+	texture = select_texture(&game->textures, wall->side, wall->step_x,
+			wall->step_y);
 	if (texture)
 		wall->tex_x = (int)(wall_x * (double)texture->width);
 	else
 		wall->tex_x = 0;
-	if ((wall->side == 0 && ray->dir.x > 0)
-		|| (wall->side == 1 && ray->dir.y < 0))
+	if ((wall->side == 0 && ray->dir.x > 0) || (wall->side == 1
+			&& ray->dir.y < 0))
 	{
 		if (texture)
 			wall->tex_x = texture->width - wall->tex_x - 1;

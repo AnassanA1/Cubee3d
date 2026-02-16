@@ -12,20 +12,20 @@
 
 #include "../../../include/main.h"
 
-char    *capitalize(const char *str)
+char	*capitalize(const char *str)
 {
-    int idx;
-    char *result;
-    
-    if (!str)
-        return (NULL);
-    idx = 0;
-    result = ft_strdup(str);
-    while (result[idx])
-    {
-        if (ft_isalpha(result[idx]))
-            result[idx] = ft_toupper(result[idx]);
-        idx++;
-    }
-    return (result);
+	int		idx;
+	char	*result;
+
+	if (!str)
+		return (NULL);
+	idx = 0;
+	result = ft_strdup(str);
+	while (result[idx])
+	{
+		if (ft_isalpha(result[idx]))
+			result[idx] = ft_toupper(result[idx]);
+		idx++;
+	}
+	return (result);
 }

@@ -12,12 +12,11 @@
 
 #include "../../../include/main.h"
 
-
-void config_handler(t_game *ref)
+void	config_handler(t_game *ref)
 {
-    if (!isAllOk(ref))
-        return ;
-    read_raw_config(ref);
-    texture_handler(ref);
-    map_handler(ref);
+	if (!isAllOk(ref))
+		return ;
+	read_raw_config(ref);
+	texture_handler(ref);
+	map_handler(ref);
 }

@@ -12,7 +12,6 @@
 
 #include "../../../include/main.h"
 
-
 char	*find_replace(char *src, char *target, char *new, int usefree)
 {
 	char	*ptr;

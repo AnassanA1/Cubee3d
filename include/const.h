@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   const.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anasszgh <anasszgh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azghibat <azghibat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:54:21 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/22 06:30:09 by anasszgh         ###   ########.fr       */
+/*   Updated: 2026/02/16 10:17:15 by azghibat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONST_H
-#define CONST_H
+# define CONST_H
 
 # define ARGS 2
 # define EXTENSION ".cub"
@@ -33,14 +33,12 @@
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 720
 # define WIN_TITLE "Cube 3D"
-# define MOVE_SPEED 0.04
 # define ROT_SPEED 0.05
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 720
 # define WIN_TITLE "Cube 3D"
-# define MOVE_SPEED 0.04
+# define MOVE_SPEED 0.2
 # define ROT_SPEED 0.05
-// minimap.
 # define MINIMAP_SIZE 200
 # define MINIMAP_MARGIN 20
 # define MINIMAP_TILE_SIZE 10

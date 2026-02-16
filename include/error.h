@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azghibat <azghibat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/28 11:10:53 by azghibat          #+#    #+#             */
+/*   Updated: 2026/02/16 10:21:24 by azghibat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ERROR_H
 # define ERROR_H
+# include "typedef.h"
 
 # define BAD_ALLOC "\033[1;31mError: Unable to allocate memory !\033[0m"
 # define BAD_ARGC "\033[1;31mError: Invalid argument count !\033[0m"
@@ -10,14 +23,14 @@
 # define EMPTY_CONF "\033[1;31mError: Invalid empty config !\033[0m"
 # define ERROR_GENERAL "\033[1;31mError: $MSG !\033[0m"
 # define ERROR_EXTA "\033[1;31mError: Invalid file extension !\033[0m"
-# define ERROR_FORMAT "\033[1;31mInvalid texture format support : {path, #hex, argb(,,,) '0-255,0-255,0-255'} !\033[0m"
+# define ERROR_FORMAT "\033[1;31mInvalid texture format support : {path, #hex,argb(,,,) '0-255,0-255,0-255'} !\033[0m"
 # define ERROR_HEXA "Invalid hexa color, it shoud be #RRGGBB !"
-# define ERROR_RGBA "\033[1;31mInvalid rgba color, it shoud be rgba (xxx,xxx,xxx) !\033[0m"
+# define ERROR_RGBA "\033[1;31mInvalid rgba color,it shoud be rgba (xxx,xxx,xxx) !\033[0m"
 # define ERROR_TXT "\033[1;31mError: $MSG texture was not set !\033[0m"
 # define BAD_E_LINE "Empty Line within the map"
 # define BAD_C_LINE "Map line should contain only {1, 0, E, W, S, N, ' '}"
 # define BAD_D_LINE "Player can face one and only one direction {S, N, E, W}"
-# define BAD_C_MAP "\033[1;31mError: Map has to be closed with walls, a.k.a {1}!\033[0m"
+# define BAD_C_MAP "\033[1;31mError: Map has to be closed with walls,a.k.a {1}!\033[0m"
 # define BAD_P_MAP "\033[1;31mError: Make no sense to have empty space in path !\033[0m"
 # define ERROR_DUP "\033[1;31mError: $TXT Duplicate texture !\033[0m"
 # define ERROR_ITXT "\033[1;31mError: $TXTWall Texture can only be image format !\033[0m"

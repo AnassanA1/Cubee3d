@@ -12,11 +12,11 @@
 
 #include "../../../include/main.h"
 
-void path_handler(t_error *error, t_texture *texture, char *path)
+void	path_handler(t_error *error, t_texture *texture, char *path)
 {
-    (void)error;
-    texture->type = IMAGE;
-    nullstr(&texture->texture.img_texture.path);
-    texture->texture.img_texture.path = ft_strtrim(path, "\t \r\b\n\v");
-    texture->is_set = true;
+	(void)error;
+	texture->type = IMAGE;
+	nullstr(&texture->texture.img_texture.path);
+	texture->texture.img_texture.path = ft_strtrim(path, "\t \r\b\n\v");
+	texture->is_set = true;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: azghibat <azghibat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:04:01 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/12 09:17:08 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/16 10:33:09 by azghibat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,14 @@ void	rotate_left(t_game *game)
 
 	old_dir_x = game->player.dir.x;
 	old_plane_x = game->player.plane.x;
-	
-	game->player.dir.x = game->player.dir.x * cos(-ROT_SPEED) - \
-		game->player.dir.y * sin(-ROT_SPEED);
-	game->player.dir.y = old_dir_x * sin(-ROT_SPEED) + \
-		game->player.dir.y * cos(-ROT_SPEED);
-	
-	game->player.plane.x = game->player.plane.x * cos(-ROT_SPEED) - \
-		game->player.plane.y * sin(-ROT_SPEED);
-	game->player.plane.y = old_plane_x * sin(-ROT_SPEED) + \
-		game->player.plane.y * cos(-ROT_SPEED);
+	game->player.dir.x = game->player.dir.x * cos(-ROT_SPEED)
+		- game->player.dir.y * sin(-ROT_SPEED);
+	game->player.dir.y = old_dir_x * sin(-ROT_SPEED) + game->player.dir.y
+		* cos(-ROT_SPEED);
+	game->player.plane.x = game->player.plane.x * cos(-ROT_SPEED)
+		- game->player.plane.y * sin(-ROT_SPEED);
+	game->player.plane.y = old_plane_x * sin(-ROT_SPEED) + game->player.plane.y
+		* cos(-ROT_SPEED);
 }
 
 void	rotate_right(t_game *game)
@@ -38,14 +36,12 @@ void	rotate_right(t_game *game)
 
 	old_dir_x = game->player.dir.x;
 	old_plane_x = game->player.plane.x;
-	
-	game->player.dir.x = game->player.dir.x * cos(ROT_SPEED) - \
-		game->player.dir.y * sin(ROT_SPEED);
-	game->player.dir.y = old_dir_x * sin(ROT_SPEED) + \
-		game->player.dir.y * cos(ROT_SPEED);
-	
-	game->player.plane.x = game->player.plane.x * cos(ROT_SPEED) - \
-		game->player.plane.y * sin(ROT_SPEED);
-	game->player.plane.y = old_plane_x * sin(ROT_SPEED) + \
-		game->player.plane.y * cos(ROT_SPEED);
+	game->player.dir.x = game->player.dir.x * cos(ROT_SPEED)
+		- game->player.dir.y * sin(ROT_SPEED);
+	game->player.dir.y = old_dir_x * sin(ROT_SPEED) + game->player.dir.y
+		* cos(ROT_SPEED);
+	game->player.plane.x = game->player.plane.x * cos(ROT_SPEED)
+		- game->player.plane.y * sin(ROT_SPEED);
+	game->player.plane.y = old_plane_x * sin(ROT_SPEED) + game->player.plane.y
+		* cos(ROT_SPEED);
 }

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: azghibat <azghibat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/16 10:33:30 by msidry           ###   ########.fr       */
+/*   Updated: 2026/01/26 12:49:48 by azghibat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/main.h"
 
-static void leakCheck(void);
+static void	leakcheck(void);
+
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_game	*game;
@@ -21,9 +22,10 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(game->display.mlx);
 }
+
 int	main(int argc, char *argv[])
 {
-	t_game *game;
+	t_game	*game;
 
 	game = NULL;
 	game_init(&game, argc, argv);
@@ -31,11 +33,11 @@ int	main(int argc, char *argv[])
 	mlx_loop_hook(game->display.mlx, &game_loop, game);
 	mlx_loop(game->display.mlx);
 	game_destroy(&game);
-	atexit(leakCheck);
+	atexit(leakcheck);
 	return (0);
 }
 
-static void leakCheck(void)
+static void	leakcheck(void)
 {
- 	system("leaks -q cube3D");
+	system("leaks -q cube3D");
 }

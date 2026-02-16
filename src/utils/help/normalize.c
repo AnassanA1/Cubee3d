@@ -12,19 +12,17 @@
 
 #include "../../../include/main.h"
 
-
-char *normalize(char *str, size_t newsize, unsigned char toapp)
+char	*normalize(char *str, size_t newsize, unsigned char toapp)
 {
-    char *newstr;
-    size_t len;
+	char	*newstr;
+	size_t	len;
 
-    len = ft_strlen(str);
-    if (len == newsize)
-        return (str);
-    newstr = ft_realloc(str, len , newsize + 1);
-    if (!newstr)
-        return (nullstr(&str), NULL);
-    ft_memset(&newstr[len], toapp, newsize - len - 1);
-    return (newstr);
+	len = ft_strlen(str);
+	if (len == newsize)
+		return (str);
+	newstr = ft_realloc(str, len, newsize + 1);
+	if (!newstr)
+		return (nullstr(&str), NULL);
+	ft_memset(&newstr[len], toapp, newsize - len - 1);
+	return (newstr);
 }
-
