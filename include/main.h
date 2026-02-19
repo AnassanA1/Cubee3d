@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/12 11:10:45 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/19 11:34:49 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,48 +29,48 @@
 # include "test.h"
 
 // INIT GAME 
-void game_init(t_game *ref, int argc, char *argv[]);
-void game_destroy(t_game *ref);
-void game_run(t_game *ref);
+void game_init(t_container *ref);
+void game_destroy(t_container *ref);
+void game_run(t_container *ref);
 
 
-// ERROR HANDLING
-void		setError(t_error *error, char *msg);
-char        *getError(t_error *error);
-void		setStat(t_error *error, int stat);
-int         getStat(t_error *error);
-void		putError(char *msg);
 
 // VALIDATION
-void        input_validator(int argc, char **argv);
-//void		input_handler(t_game *ref);
-void		mostBeGood(t_game *ref);
-bool		isAllOk(t_game *ref);
+void        input_validator(t_container *ref);
 
-// MAP && scene
-void		map_handler(t_game *ref);
-void        map_validator(t_game *ref);
-void        normaize_width(t_map *map, unsigned char toapp);
+
+// MAP
+void		map_handler(t_container *ref);
+void        map_validator(t_container *ref);
+void        empty_line(t_container *ref, char *line);
+void        supported_line(t_container *ref,char *line);
+void        one_direction(t_container *ref, char **arr);
+void        closed_map(t_container *ref, t_map *map);
+void        space_in_path(t_container *ref, t_map *map);
 
 
 //  CONFIG 
-void        config_handler(t_game *ref, char *file);
-void		read_raw_config(t_game *ref, char *);
-int         is_map_config(char *line);
+void		read_raw_config(t_container *ref);
+void        split_raw_config(t_dfile *ref);
+void        valid_textures(t_container *ref);
+void        valid_texture_image(t_container *ref, char *str);
+void        valid_texture_solid(t_container *ref, char *str);
 
 
-// TEXTURES 
-void	texture_handler(t_game *ref);
-void	set_south_texture(t_error *err, t_textures *textures, char *line);
-void	set_north_texture(t_error *err, t_textures *textures, char *line);
-void	set_east_texture(t_error *err, t_textures *textures, char *line);
-void	set_west_texture(t_error *err, t_textures *textures, char *line);
-void	set_sky_texture(t_error *err, t_textures *textures, char *line);
-void	set_floor_texture(t_error *err, t_textures *textures, char *line);
-void    texture_format_handler(t_error * error, t_texture *target, char *line);
-void    rgba_handler (t_error *error, t_texture *texture, char *rgbacolor);
-void    hexa_handler(t_error *error, t_texture *texture, char *hexacolor);
-void    path_handler(t_error *error, t_texture *texture, char *path);
+// MLX
+void        mlx_handler(t_container *ref, int action);
+
+
+// TEXTURES
+void        textures_handler(t_container *ref, int action);
+mlx_image_t *load_texture_image(t_container *ref, char *path);
+t_uint      get_color(t_container *ref, char *target);
+mlx_image_t *get_texture_image(t_container *ref, char *target);
+
+
+void        draw_floor_ceilling(t_container *ref);
+void        raycasting(t_container *ref);
+void        cast_ray(t_container *ref, int x);
 
 
 // HELPER
@@ -95,13 +95,13 @@ char    *normalize(char *str, size_t newsize, unsigned char toapp);
 void    **alloc2darr(size_t elem, size_t items, size_t itemsize);
 
 //movements.c
-void	movement_handler(t_game *game);
-void	move_forward(t_game *game);
-void	move_backward(t_game *game);
-void	rotate_left(t_game *game);
-void	rotate_right(t_game *game);
-void	strafe_right(t_game *game);
-void	strafe_left(t_game *game);
+void	movement_handler(t_container *game);
+void	move_forward(t_container *game);
+void	move_backward(t_container *game);
+void	rotate_left(t_container *game);
+void	rotate_right(t_container *game);
+void	strafe_right(t_container *game);
+void	strafe_left(t_container *game);
 
 
 // main
@@ -109,20 +109,20 @@ void	strafe_left(t_game *game);
 void	game_loop(void *param);
 //drawing.c
 void    put_pixel(mlx_image_t *img, int x, int y, int color);
-void    draw_floor_ceilling(t_game *game);
-int	    get_wall_color(t_textures *txt, int side, int step_x, int step_y);
+void    draw_floor_ceilling(t_container *game);
+//int	    get_wall_color(t_textures *txt, int side, int step_x, int step_y);
 
 //raycasting.c
-void raycasting(t_game *game);
-void cast_ray(t_game *game, int x);
+void raycasting(t_container *game);
+void cast_ray(t_container *game, int x);
 
 //dda.c
-void    performing_dda(t_game *game, t_ray *ray, t_dda *dda, t_wall *wall);
-// double  get_perpendular(t_game *game, t_ray *ray, t_wall *wall);
+void    performing_dda(t_container *game, t_ray *ray, t_dda *dda, t_wall *wall);
+// double  get_perpendular(t_container *game, t_ray *ray, t_wall *wall);
 double  get_perpendular(t_wall *wall, t_dda *data);
-void draw_wall(t_game *game, int x, t_wall *wall, int line_height);
-//void draw_wall(t_game *game, int x, t_wall *wall, t_ray *ray);
-int	calculate_line_height(double perp_wall_dist);
+void draw_wall(t_container *game, int x, t_wall *wall, int line_height);
+//void draw_wall(t_container *game, int x, t_wall *wall, t_ray *ray);
+int	calculate_line_height(double perp_wall_dist , int height);
 
 
 // QUEUE

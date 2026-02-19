@@ -6,61 +6,21 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:10:10 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/12 11:34:41 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/19 11:05:50 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/main.h"
 
-static void clean_scene(t_scene *scene);
-static void clean_error(t_error *error);
-static void clean_textures(t_textures *textures);
+static void clean_textures(t_container *ref);
 static void clean_map(t_map *map);
-static void clear_config(t_confile *conf);
+static void clear_dataconfig(t_container *ref);
 
-
-void game_destroy(t_game *ref)
+void game_destroy(t_container *ref)
 {
-    // TODO: release resources !
-    clear_config(&ref->configfile);
-    clean_scene(&ref->scene);
-    clean_error(&ref->error);
-    clean_textures(&ref->textures);
+    clear_dataconfig(ref);
     clean_map(&ref->map);
-}
-
-static void clean_scene(t_scene *scene)
-{
-    if (scene->fd > -1)
-        close(scene->fd);
-    ft_lstclear(&scene->rawmap, free);
-}
-static void clean_error(t_error *error)
-{
-    if (error)
-    {
-        free(error->message);
-        error->stat = 0;
-    }
-}
-
-static void clean_textures(t_textures *textures)
-{
-    if (textures)
-    {
-        if (textures->south_txt.type == IMAGE)
-            nullstr(&textures->south_txt.texture.img_texture.path);
-        if (textures->north_txt.type == IMAGE)
-            nullstr(&textures->north_txt.texture.img_texture.path);
-        if (textures->east_txt.type == IMAGE)
-            nullstr(&textures->east_txt.texture.img_texture.path);
-        if (textures->west_txt.type == IMAGE)
-            nullstr(&textures->west_txt.texture.img_texture.path);
-        if (textures->floor_txt.type == IMAGE)
-            nullstr(&textures->floor_txt.texture.img_texture.path);
-        if (textures->sky_txt.type == IMAGE)
-            nullstr(&textures->sky_txt.texture.img_texture.path);
-    }
+    clean_textures(ref);
 }
 
 static void clean_map(t_map *map)
@@ -70,10 +30,30 @@ static void clean_map(t_map *map)
     nullarr2d((void ***)&map->map2d, str2dlen(map->map2d));
 }
 
-static void clear_config(t_confile *conf)
+static void clear_dataconfig(t_container *ref)
 {
-    ft_lstclear(&conf->conflist, free);
-    conf->conflist = NULL;
-    ft_lstclear(&conf->maplist, free);
-    conf->maplist = NULL;
+    ft_lstclear(&ref->datafile.config, free);
+    ft_lstclear(&ref->datafile.map, free);
+    ft_lstclear(&ref->datafile.rawdata, free);
 }
+
+static void clean_textures(t_container *ref)
+{
+    int idx;
+
+    idx = 0;
+    while (idx < 2)
+    {
+        nullstr(&ref->txt_solid[idx].key);
+        nullstr(&ref->txt_solid[idx].value);
+        idx++;
+    }
+    idx = 0;
+    while (idx < 4)
+    {
+        nullstr(&ref->txt_images[idx].key);
+        nullstr(&ref->txt_images[idx].value);
+        ref->txt_images[idx].img = NULL;
+        idx++;
+    }
+} 

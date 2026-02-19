@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   allGood.c                                          :+:      :+:    :+:   */
+/*   load_texture_image.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 18:17:13 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/12 09:34:06 by msidry           ###   ########.fr       */
+/*   Created: 2026/02/18 16:48:27 by msidry            #+#    #+#             */
+/*   Updated: 2026/02/18 16:48:38 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/main.h"
+#include "../../../include/main.h"
 
-void mostBeGood(t_game *ref)
+mlx_image_t *load_texture_image(t_container *ref, char *path)
 {
-    int exitCode;
-    exitCode = ref->error.stat;
-    if (exitCode)
-    {
-        putError(getError(&ref->error));
-        game_destroy(ref);
-        exit(exitCode);
-    }
-}
-bool isAllOk(t_game *ref)
-{
-    if (!ref)
-        return(false);
-    return (ref->error.stat == 0);
+    mlx_texture_t *texture;
+    mlx_image_t *image;
+    
+    texture = mlx_load_png(path);
+    if (!texture)
+        return (NULL);
+    image = mlx_texture_to_image(ref->display.mlx, texture);
+    free(texture->pixels);
+    free(texture);
+    return (image);
 }

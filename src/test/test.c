@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:39:38 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/13 11:27:46 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/18 17:00:40 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,9 @@ void print_raw_map(t_list *map)
 
 static void print_map_line(void *content)
 {
-    if (!is_map_config((char *)content))
-    {
-        char *colored = find_replace(MAPLINE, "$MAPLINE", (char *)content, 0);
-        ft_putendl_fd(colored, 1);
-        free (colored);
-    }
-    else
-    {
-        char *colored = find_replace(CONFIG, "$CONFIG", (char *)content, 0);
-        ft_putendl_fd(colored, 1);
-        free (colored);
-    }
+    char *colored = find_replace(MAPLINE, "$MAPLINE", (char *)content, 0);
+    ft_putendl_fd(colored, 1);
+    free (colored);
 }
 
 
@@ -80,7 +71,7 @@ void print_map_grid(t_grid grid)
     }
 }
 
-void config_info(t_game *ref)
+void config_info(t_container *ref)
 {
     echo("NORTH TEXTURE INFO :");
     texture_info(&ref->textures.north_txt);

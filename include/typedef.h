@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:14:02 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/12 10:29:10 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/18 17:00:28 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,57 +16,14 @@
 typedef unsigned int	t_uint;
 typedef char**			t_grid;
 
-typedef struct s_error
+typedef struct s_dfile
 {
-	int		stat;
-	char	*message;
-}	t_error;
-
-
-typedef struct s_confile
-{
-    t_list *conflist;
-    t_list *maplist;
-}   t_confile;
-
-typedef struct s_scene
-{
-	int		fd;
 	char	*path;
-	t_list	*rawmap;
-}	t_scene;
-
-typedef enum e_texture_type
-{
-	SOLID,
-	IMAGE,
-}	t_txttype;
-
-typedef struct s_imgtxt
-{
-    mlx_image_t *txt;
-    char *path;
-} t_imgtxt;
-
-typedef struct s_texture
-{
-    t_txttype type;
-    union {
-        t_uint rgba;
-        t_imgtxt img_texture;
-    } texture;
-    bool is_set;
-} t_texture;
-
-typedef struct s_textures
-{
-    t_texture sky_txt;
-    t_texture south_txt;
-    t_texture north_txt;
-    t_texture east_txt;
-    t_texture west_txt;
-    t_texture floor_txt;
-} t_textures;
+	t_list	*rawdata;
+    t_list  *config;
+    t_list  *map;
+    int     fd;
+}	t_dfile;
 
 
 typedef struct s_map
@@ -79,8 +36,11 @@ typedef struct s_map
 
 typedef struct s_display
 {
-    mlx_t *mlx;
-    mlx_image_t *img;
+    mlx_t           *mlx;
+    mlx_image_t     *img;
+    char            *title;
+    unsigned int    width;
+    unsigned int    height;
 }t_display;
 
 
@@ -99,6 +59,40 @@ typedef struct s_player
     t_vector plane;
     
 } t_player;
+
+
+typedef struct s_texture_image
+{
+    char *key;
+    char *value;
+    mlx_image_t *img; 
+} t_texture_image;
+
+typedef struct s_texture_solid
+{
+    char *key;
+    char *value;
+    t_uint rgb;
+} t_texture_solid;
+
+typedef struct s_container
+{
+    t_dfile datafile;
+    t_map  map;
+    t_player player;
+    t_display display;
+    t_texture_image txt_images[4];
+    t_texture_solid txt_solid[2];
+    int argc;
+} t_container;
+
+typedef struct s_queue
+{
+    unsigned char content;
+    struct s_queue *next; 
+    int x;
+    int y;
+} t_queue;
 
 typedef struct s_ray
 {
@@ -128,32 +122,5 @@ typedef struct s_wall
 	int		line_height;
     int     tex_x;
 }	t_wall;
-
-typedef struct s_container
-{
-    int argc;
-    char **argv;
-    t_confile configfile;
-    t_scene scene;
-    t_error error;
-    t_map  map;
-    t_textures textures;
-    t_player player;
-    t_display display;
-
-} t_game;
-
-
-typedef bool(*validCallback)(t_game *game);
-typedef void (*callconfi)(t_error *err, t_textures *txt, char *ln);
-typedef void (*callformat)(t_error *err, t_texture *, char *frmt);
-
-typedef struct s_queue
-{
-    unsigned char content;
-    struct s_queue *next;
-    int x;
-    int y;
-} t_queue;
 
 #endif

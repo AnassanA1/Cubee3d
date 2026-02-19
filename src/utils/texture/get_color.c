@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handler_texture_path.c                             :+:      :+:    :+:   */
+/*   get_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 12:37:43 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/13 11:18:32 by msidry           ###   ########.fr       */
+/*   Created: 2026/02/18 12:27:16 by msidry            #+#    #+#             */
+/*   Updated: 2026/02/18 16:58:41 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
 
-void path_handler(t_error *error, t_texture *texture, char *path)
+
+
+t_uint get_color(t_container *ref, char *target)
 {
-    (void)error;
-    texture->type = IMAGE;
-    nullstr(&texture->texture.img_texture.path);
-    texture->texture.img_texture.path = ft_strtrim(path, "\t \r\b\n\v");
-    texture->is_set = true;
+    if (*target == 'C')   
+        return (ref->txt_solid[0].rgb);
+    return (ref->txt_solid[1].rgb);
+}
+
+mlx_image_t *get_texture_image(t_container *ref, char *target)
+{
+    int idx = 0;
+    
+    while (idx < 4)
+    {
+        if (ref->txt_images[idx].key[0] == *target)
+            return (ref->txt_images[idx].img);
+        idx++;
+    }
+    return (ref->txt_images[0].img); 
 }

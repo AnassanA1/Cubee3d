@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:01:47 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/18 13:35:43 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/18 17:48:47 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,21 @@
 
 t_uint rgbatoint(char *rgbacolor)
 {
-    t_uint rgba[4];
+    t_uint rgba[3];
     char **values;
-    size_t length;
     size_t idx;
-    char ***ptr;
+    size_t length;
     
-    if (!rgbacolor)
-        return (0);
+    idx  = 0;
     values = ft_split(rgbacolor, ',');
     length = str2dlen(values);
-    idx  = -1;
-    if (length < 3)
-        rgba[++idx] = 0xFF;
-    while (++idx < 4)
+    while (idx < length)
     {
         rgba[idx] = ft_atoi(values[idx]);
-        if (rgba[idx] > 255)
-            rgba[idx] = (t_uint)rgba[idx] & 0xFF;
+        idx++;
     }
-    ptr = &values;
-    nullarr2d((void ***)ptr, length);
-    return ((rgba[0] << 24) | (rgba[1] << 16) |(rgba[2] << 8) | rgba[3]);
+    nullarr2d((void ***)&values, length);
+    return (0xFF << 24 | (rgba[0] << 16) | (rgba[1] << 8) | (rgba[2]));
 }
 
 t_uint hexatoint(char *hexacolor)

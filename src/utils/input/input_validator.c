@@ -6,21 +6,21 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 13:32:59 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/12 11:17:32 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/18 17:01:33 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
 
 static bool validArgc(int argc);
-static bool validExtension(char *file);
-static bool validFile(char *file);
+static bool validExtension(t_dfile *ref);
+static bool validFile(t_dfile *ref);
 
-void input_validator(int argc, char **argv)
+void input_validator(t_container *ref)
 {
-    validArgc(argc);
-    validExtension(argv[1]);
-    validFile(argv[1]);
+    validArgc(ref->argc);
+    validExtension(&ref->datafile);
+    validFile(&ref->datafile);
 }
 
 static bool validArgc(int argc)
@@ -40,16 +40,15 @@ static bool validArgc(int argc)
     return (true);
 }
 
-static bool validFile(char *file)
+static bool validFile(t_dfile *ref)
 {
     char *message;
     char *tmp;
-    int fd;
 
-    fd = open(file, O_RDONLY);
-    if (fd < 0)
+    ref->fd = open(ref->path, O_RDONLY);
+    if (ref->fd < 0)
     {
-        message = concat3(file, strerror(errno), ": ", 0);
+        message = concat3(ref->path, strerror(errno), ": ", 0);
         tmp = find_replace(ERROR_GENERAL, "$MSG", message, 0);
         ft_putstr_fd(tmp, 2);
         free(message);
@@ -57,16 +56,15 @@ static bool validFile(char *file)
         exit(EXIT_FAILURE);
         return (false);
     }
-    close(fd);
     return (true);
 }
 
-static bool validExtension(char *file)
+static bool validExtension(t_dfile *ref)
 {
     char *extension;
     char *tmp;
 
-    extension = ft_strrchr(file, '.');
+    extension = ft_strrchr(ref->path, '.');
     if (!extension || ft_strncmp(EXTENSION, extension, 5))
     {
         tmp = find_replace(ERROR_GENERAL, "$MSG", ERROR_EXTA, 0);

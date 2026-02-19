@@ -6,19 +6,19 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:31:07 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/12 08:34:45 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/19 11:34:38 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/main.h"
+#include "../../../include/main.h"
 
-int	calculate_line_height(double perp_wall_dist)
+int	calculate_line_height(double perp_wall_dist, int height)
 {
 	int	line_height;
 
 	if (perp_wall_dist == 0)
-		return (WIN_HEIGHT);
-	line_height = (int)(WIN_HEIGHT / perp_wall_dist);
+		return (height);
+	line_height = (int)(height / perp_wall_dist);
 	return (line_height);
 }
 
@@ -33,7 +33,7 @@ double  get_perpendular(t_wall *wall, t_dda *data)
     return (perpen);
 }
 
-void    performing_dda(t_game *game, t_ray *ray, t_dda *dda, t_wall *wall)
+void    performing_dda(t_container *game, t_ray *ray, t_dda *dda, t_wall *wall)
 {
     wall->hit = 0;
     while (wall->hit == 0)

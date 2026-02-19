@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:37:40 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/19 16:15:55 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/18 17:00:08 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,9 @@
 void echo(char *message);
 void debug(char *lvl, char *message);
 void print_raw_map(t_list *map);
-void texture_info(t_texture *texture);
 //char **remove_empty_str_at_end(char **arr);
 void print_map_grid(t_grid grid);
-void config_info(t_game *ref);
-
-void init_mlx(t_game *ref);
+void config_info(t_container *ref);
 
 
 // typedef struct s_queue

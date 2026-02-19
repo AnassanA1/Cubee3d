@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_raw_config.c                                  :+:      :+:    :+:   */
+/*   valid_texture_image.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 18:53:59 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/18 17:00:47 by msidry           ###   ########.fr       */
+/*   Created: 2026/02/16 18:21:53 by msidry            #+#    #+#             */
+/*   Updated: 2026/02/18 19:40:26 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
 
-void read_raw_config(t_container *ref)
+void valid_texture_image(t_container *ref, char *str)
 {
-    char *rawline;
-    t_list *node;
-    char *tmp;
+    char    *file;
+    int     fd;
+    char    *tmp;
 
-    while (true)
+    file = ft_strtrim(str + 2, SPACES);
+    fd = open(file, O_RDONLY);
+    if (fd < 0)
     {
-        rawline = get_next_line(ref->datafile.fd);
-        if (!rawline)
-            break;
-        node = ft_lstnew(ft_strtrim(rawline, "\n"));
-        ft_lstadd_back(&ref->datafile.rawdata, node);
-        free(rawline);
-    }
-    close(ref->datafile.fd);
-    if (!ref->datafile.rawdata)
-    {
-        tmp = find_replace(ERROR_GENERAL, "$MSG", EMPTY_MAP, 0);
+        tmp = find_replace(ERROR_FILE, "$FILE", file, 0);
         ft_putstr_fd(tmp, STDERR_FILENO);
         free(tmp);
+        free(file);
+        ft_lstclear(&ref->datafile.config, free);
+        ft_lstclear(&ref->datafile.map, free);
         exit(EXIT_FAILURE);
     }
+    free(file);
+    close(fd);
 }

@@ -1,9 +1,6 @@
-NO assets/txt1.png
-F     #000000
-C    #00FFFF
-
-
-
+NO assets/txt1.png 
+C 255,255,255
+F 0,0,0
 
 SO assets/txt1.png
 WE assets/txt1.png

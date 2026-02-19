@@ -22,34 +22,29 @@ MLXLIB = -l$(MLXLIB_NAME) $(FRAMEWORKS)
 MLXLIB_DIR = libs/mlx/
 
 SRCS =	src/utils/game_init.c \
-		src/utils/game_run.c \
 		src/utils/game_destroy.c \
-		src/utils/error/error_helpers.c \
 		src/utils/input/input_validator.c \
-		src/utils/config/config_handler.c \
 		src/utils/config/read_raw_config.c \
-		src/utils/config/is_map_config.c \
-		src/utils/texture/texture_handler.c \
-		src/utils/texture/handler_east.c \
-		src/utils/texture/handler_floor.c \
-		src/utils/texture/handler_north.c \
-		src/utils/texture/handler_sky.c \
-		src/utils/texture/handler_south.c \
-		src/utils/texture/handler_west.c \
-		src/utils/texture/texture_format_handler.c \
-		src/utils/texture/handler_texture_color.c \
-		src/utils/texture/handler_texture_path.c \
+		src/utils/config/split_raw_config.c \
+        src/utils/config/valid_textures.c \
+		src/utils/config/valid_texture_image.c \
+        src/utils/config/valid_texture_solid.c \
 		src/utils/map/map_handler.c \
 		src/utils/map/map_validator.c \
-		src/utils/map/map_transform.c \
+		src/utils/map/map_validations.c  \
+		src/utils/mlx/mlx_handler.c \
+		src/utils/texture/textures_handler.c \
+		src/utils/texture/load_texture_image.c \
+		src/utils/texture/get_color.c \
+		src/utils/game_run.c \
 		src/utils/game_loop.c \
 		src/utils/movements/handler.c \
-		src/utils/movements/rotate.c \
 		src/utils/movements/move.c \
+		src/utils/movements/rotate.c \
+		src/utils/drawing/drawing.c \
 		src/utils/raycasting/raycasting.c \
-		src/utils/dda.c \
-		src/utils/drawing/drawing.c\
-		src/utils/allGood.c \
+		src/utils/raycasting/dda.c
+
 		
 		
 
@@ -73,12 +68,9 @@ HELPERS =	src/utils/help/get_next_line.c \
 			src/utils/queue/q_pop.c \
 			src/utils/queue/q_push.c
 
-TEST =	src/test/test.c \
-		src/test/q_print.c 
-#		src/test/mlx/init_mlx.c
 		 
 
-OBJS = $(MAIN:.c=.o) $(SRCS:.c=.o) $(HELPERS:.c=.o) $(TEST:.c=.o)
+OBJS = $(MAIN:.c=.o) $(SRCS:.c=.o) $(HELPERS:.c=.o)
 
 
 %.o : %.c $(INCLUDE)
@@ -124,7 +116,7 @@ fclean : clean
 
 PARAM = test.cub
 
-run : fclean $(NAME)
+run : $(NAME)
 	@echo $(RUNNING) $(NAME)
 	@./$(NAME) $(PARAM)
 
