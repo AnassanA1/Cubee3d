@@ -1,7 +1,5 @@
 NAME = cube3D
 
-
-
 CC = cc
 CFLAGS = -Wall -Werror -Wextra 
 CSTAGE = -c
@@ -114,11 +112,11 @@ fclean : clean
 
 # // TODO: Add program params for testing !
 
-PARAM = test.cub
+MAP = maps/test.cub
 
 run : $(NAME)
 	@echo $(RUNNING) $(NAME)
-	@./$(NAME) $(PARAM)
+	@./$(NAME) $(MAP)
 
 .PHONY: all clean fclean re run
 
