@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:13:48 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/20 14:05:28 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/20 15:41:55 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,9 @@ void	draw_wallp(t_container *ref, t_ray *ray, t_wall *wall, int x,
 	y = draw_start;
 	while (y < draw_end)
 	{
-		tex_y = (int)tex_pos & (texture->height - 1);
+		tex_y = (int)tex_pos % texture->height;
+		if (tex_y < 0)
+    		tex_y = 0;
 		tex_pos += step;
 		color = get_texture_pixel(texture, wall->tex_x, tex_y);
 		put_pixel(ref->display.img, x, y, color);
