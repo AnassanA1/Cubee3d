@@ -21,52 +21,52 @@ MLXLIB_NAME = mlx42
 MLXLIB = -l$(MLXLIB_NAME) $(FRAMEWORKS)
 MLXLIB_DIR = libs/mlx/
 
-SRCS =	src/utils/game_init.c \
-		src/utils/game_destroy.c \
-		src/utils/input/input_validator.c \
-		src/utils/config/read_raw_config.c \
-		src/utils/config/split_raw_config.c \
-        src/utils/config/valid_textures.c \
-		src/utils/config/valid_texture_image.c \
-        src/utils/config/valid_texture_solid.c \
-		src/utils/map/map_handler.c \
-		src/utils/map/map_validator.c \
-		src/utils/map/map_validations.c  \
-		src/utils/mlx/mlx_handler.c \
-		src/utils/texture/textures_handler.c \
-		src/utils/texture/load_texture_image.c \
-		src/utils/texture/get_color.c \
-		src/utils/game_run.c \
-		src/utils/game_loop.c \
-		src/utils/movements/handler.c \
-		src/utils/movements/move.c \
-		src/utils/movements/rotate.c \
-		src/utils/drawing/drawing.c \
-		src/utils/raycasting/raycasting.c \
-		src/utils/raycasting/dda.c
+SRCS =	src/game_init.c \
+		src/game_destroy.c \
+		src/input/input_validator.c \
+		src/config/read_raw_config.c \
+		src/config/split_raw_config.c \
+        src/config/valid_textures.c \
+		src/config/valid_texture_image.c \
+        src/config/valid_texture_solid.c \
+		src/map/map_handler.c \
+		src/map/map_validator.c \
+		src/map/map_validations.c  \
+		src/mlx/mlx_handler.c \
+		src/texture/textures_handler.c \
+		src/texture/load_texture_image.c \
+		src/texture/get_color.c \
+		src/game_run.c \
+		src/game_loop.c \
+		src/movements/handler.c \
+		src/movements/move.c \
+		src/movements/rotate.c \
+		src/drawing/drawing.c \
+		src/raycasting/raycasting.c \
+		src/raycasting/dda.c
 
 		
 		
 
-HELPERS =	src/utils/help/get_next_line.c \
-			src/utils/help/array2d.c \
-			src/utils/help/concat3.c \
-			src/utils/help/contain_only.c \
-			src/utils/help/converter.c \
-			src/utils/help/find_replace.c \
-			src/utils/help/is_space.c \
-			src/utils/help/match_count.c \
-			src/utils/help/capitalize.c \
-			src/utils/help/serialize.c \
-			src/utils/help/transform.c \
-			src/utils/help/ft_realloc.c \
-			src/utils/help/normalize.c \
-			src/utils/help/boundaryfloodfill.c \
-			src/utils/queue/q_crud.c \
-			src/utils/queue/q_find.c  \
-			src/utils/queue/q_last.c  \
-			src/utils/queue/q_pop.c \
-			src/utils/queue/q_push.c
+HELPERS =	src/help/get_next_line.c \
+			src/help/array2d.c \
+			src/help/concat3.c \
+			src/help/contain_only.c \
+			src/help/converter.c \
+			src/help/find_replace.c \
+			src/help/is_space.c \
+			src/help/match_count.c \
+			src/help/capitalize.c \
+			src/help/serialize.c \
+			src/help/transform.c \
+			src/help/ft_realloc.c \
+			src/help/normalize.c \
+			src/help/boundaryfloodfill.c \
+			src/queue/q_crud.c \
+			src/queue/q_find.c  \
+			src/queue/q_last.c  \
+			src/queue/q_pop.c \
+			src/queue/q_push.c
 
 		 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anasszgh <anasszgh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:14:02 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/20 01:55:46 by anasszgh         ###   ########.fr       */
+/*   Updated: 2026/02/20 13:55:48 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ typedef struct s_wall
 	int					step_x;
 	int					step_y;
 	int					hit;
-	int					side; // hosrizental or vertical
+	int					side;
 	double				perp_dist;
 	int					line_height;
 	int					tex_x;

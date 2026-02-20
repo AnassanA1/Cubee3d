@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:54:21 by msidry            #+#    #+#             */
-/*   Updated: 2026/01/12 08:26:17 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/20 14:11:11 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,12 @@
 
 # define ARGS 2
 # define EXTENSION ".cub"
-# define MAPLINE "\033[1;47m$MAPLINE\033[0m"
-# define CONFIG "\033[1;35mCONFIG :\033[0m \033[1;33m$CONFIG\033"
 # define NORTH "NO"
 # define SOUTH "SO"
 # define WEST "WE"
 # define EAST "EA"
 # define SKY "C"
 # define FLOOR "F"
-# define HEXA "HEXA"
-# define RGBA "RGBA"
-# define PATH "PATH"
 # define HEXASET "0123456789ABCDEFabcdef"
 # define DECISET "0123456789"
 # define MAPSET "01NSEW "

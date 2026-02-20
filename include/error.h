@@ -1,27 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/20 13:51:41 by msidry            #+#    #+#             */
+/*   Updated: 2026/02/20 13:53:17 by msidry           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ERROR_H
 # define ERROR_H
 
 # define ERROR_GENERAL "\033[1;31mError: $MSG !\n\033[0m"
-# define BAD_ALLOC "Unable to allocate memory"
 # define BAD_ARGC "Invalid argument count"
 # define BAD_FEMPTY "Scene description file is mandatory"
-# define BAD_FILE "Invalid config file"
-# define BAD_MAP "Invalid map"
 # define EMPTY_MAP "Invalid empty configuration file"
 # define EMPTY_CONF "Add {NO, SO, WE, EA, F, C} configuration at top of map"
 # define ERROR_EXTA "Invalid file extension"
-//fix this linenorm
-# define ERROR_FORMAT "Invalid texture format support : {path, #hex,argb(,,,) '0-255,0-255,0-255'}"
-# define ERROR_HEXA "Invalid hexa color, it shoud be #RRGGBB"
-# define ERROR_RGBA "Invalid rgba color, it shoud be rgba (xxx,xxx,xxx)"
-# define ERROR_TXT "texture was not set"
 # define BAD_E_LINE "Empty Line within the map"
 # define BAD_C_LINE "Map line should contain only {1, 0, E, W, S, N, ' '}"
 # define BAD_D_LINE "Player has to face one direction {S, N, E, W}"
 # define BAD_C_MAP "\033[1;31mError: Map is not closed with walls !\n\033[0m"
 # define BAD_P_MAP "\033[1;31mError: Map has space in walkable path !\n\033[0m"
-# define ERROR_ITXT "$TXTWall Texture can only be image format"
-# define ERROR_CTXT "$TXTsky and floor can only be solid color"
 # define ERROR_MISSING "Missing textutes check {NO, SO, WE, EA, F, C}"
 # define ERROR_DUP "Duplicate textutes check {NO, SO, WE, EA, F, C}"
 # define ERROR_SPACE "Texture should be prefix {NO, F, ...} + space + value"
