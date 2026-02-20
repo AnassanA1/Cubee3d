@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef CONST_H
-#define CONST_H
+# define CONST_H
 
 # define ARGS 2
 # define EXTENSION ".cub"

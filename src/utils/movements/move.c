@@ -19,7 +19,6 @@ void	move_forward(t_container *ref)
 
 	new_x = ref->player.pos.x + ref->player.dir.x * MOVE_SPEED;
 	new_y = ref->player.pos.y + ref->player.dir.y * MOVE_SPEED;
-	
 	if (ref->map.map2d[(int)ref->player.pos.y][(int)new_x] != '1')
 		ref->player.pos.x = new_x;
 	if (ref->map.map2d[(int)new_y][(int)ref->player.pos.x] != '1')
@@ -33,7 +32,6 @@ void	move_backward(t_container *ref)
 
 	new_x = ref->player.pos.x - ref->player.dir.x * MOVE_SPEED;
 	new_y = ref->player.pos.y - ref->player.dir.y * MOVE_SPEED;
-	
 	if (ref->map.map2d[(int)ref->player.pos.y][(int)new_x] != '1')
 		ref->player.pos.x = new_x;
 	if (ref->map.map2d[(int)new_y][(int)ref->player.pos.x] != '1')
@@ -47,7 +45,6 @@ void	strafe_left(t_container *ref)
 
 	new_x = ref->player.pos.x - ref->player.dir.y * MOVE_SPEED;
 	new_y = ref->player.pos.y + ref->player.dir.x * MOVE_SPEED;
-	
 	if (ref->map.map2d[(int)ref->player.pos.y][(int)new_x] != '1')
 		ref->player.pos.x = new_x;
 	if (ref->map.map2d[(int)new_y][(int)ref->player.pos.x] != '1')
@@ -61,7 +58,6 @@ void	strafe_right(t_container *ref)
 
 	new_x = ref->player.pos.x + ref->player.dir.y * MOVE_SPEED;
 	new_y = ref->player.pos.y - ref->player.dir.x * MOVE_SPEED;
-	
 	if (ref->map.map2d[(int)ref->player.pos.y][(int)new_x] != '1')
 		ref->player.pos.x = new_x;
 	if (ref->map.map2d[(int)new_y][(int)ref->player.pos.x] != '1')

@@ -12,20 +12,20 @@
 
 #include "../../../include/main.h"
 
-t_uint match_count(char *str, unsigned char c)
+t_uint	match_count(char *str, unsigned char c)
 {
-    t_uint count;
+	t_uint	count;
 
-    count = 0;
-    if (!str)
-        return (0);
-    while (*str)
-    {
-        if (*str == c)
-            count++;
-        str++;
-    }
-    if (*str == c)
-        count++;
-    return (count);
+	count = 0;
+	if (!str)
+		return (0);
+	while (*str)
+	{
+		if (*str == c)
+			count++;
+		str++;
+	}
+	if (*str == c)
+		count++;
+	return (count);
 }

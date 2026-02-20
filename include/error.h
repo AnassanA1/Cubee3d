@@ -10,7 +10,8 @@
 # define EMPTY_MAP "Invalid empty configuration file"
 # define EMPTY_CONF "Add {NO, SO, WE, EA, F, C} configuration at top of map"
 # define ERROR_EXTA "Invalid file extension"
-# define ERROR_FORMAT "Invalid texture format support : {path, #hex, argb(,,,) '0-255,0-255,0-255'}"
+//fix this linenorm
+# define ERROR_FORMAT "Invalid texture format support : {path, #hex,argb(,,,) '0-255,0-255,0-255'}"
 # define ERROR_HEXA "Invalid hexa color, it shoud be #RRGGBB"
 # define ERROR_RGBA "Invalid rgba color, it shoud be rgba (xxx,xxx,xxx)"
 # define ERROR_TXT "texture was not set"

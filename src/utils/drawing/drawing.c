@@ -3,53 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: anasszgh <anasszgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:23:09 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/19 11:35:52 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/20 02:02:53 by anasszgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
 
-void    put_pixel(mlx_image_t *img, int x, int y, int color)
+void	put_pixel(mlx_image_t *img, int x, int y, int color)
 {
-    int index;
-	int *pixel;
+	int	index;
+	int	*pixel;
 
-    if (x < 0 || x >= (int)img->width || y < 0 || y >= (int)img->height)
-        return ;
-    index = (y * img->width + x) * 4;
+	if (x < 0 || x >= (int)img->width || y < 0 || y >= (int)img->height)
+		return ;
+	index = (y * img->width + x) * 4;
 	pixel = (int *)(img->pixels + index);
 	*pixel = color;
-	//img->pixels[index + 3] = color >> 24 ; //alpha
-    //img->pixels[index + 2] = (color >> 16) & 0xFF; // red component
-    //img->pixels[index + 1] = (color >> 8) & 0xFF; // green component
-    //img->pixels[index]= (color & 0xFF); // blue component
 }
+	// img->pixels[index + 3] = color >> 24 ; //alpha
+	// img->pixels[index + 2] = (color >> 16) & 0xFF; // red component
+	// img->pixels[index + 1] = (color >> 8) & 0xFF; // green component
+	// img->pixels[index]= (color & 0xFF); // blue component
 
-
-void    draw_floor_ceilling(t_container *ref)
+void	draw_floor_ceilling(t_container *ref)
 {
-    unsigned int  x;
-    unsigned int  y;
+	unsigned int	x;
+	unsigned int	y;
+
 	y = 0;
-    while (y < ref->display.height)
-    {
-        x = 0;
-        while (x < ref->display.width)
-        {
-            if (y < ref->display.height / 2)
+	while (y < ref->display.height)
+	{
+		x = 0;
+		while (x < ref->display.width)
+		{
+			if (y < ref->display.height / 2)
 				put_pixel(ref->display.img, x, y, get_color(ref, SKY));
 			else
 				put_pixel(ref->display.img, x, y, get_color(ref, FLOOR));
-            x++;
-        }
-        y++;
-    }
+			x++;
+		}
+		y++;
+	}
 }
-
-
 
 //  void	draw_wall(t_container *ref, int x, t_wall *wall, int line_height)
 // {
@@ -72,5 +70,3 @@ void    draw_floor_ceilling(t_container *ref)
 // 		y++;
 // 	}
 // }
-
-

@@ -3,88 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: anasszgh <anasszgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:39:38 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/18 17:00:40 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/20 02:23:48 by anasszgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/main.h"
 
+static void	print_map_line(void *content);
 
-static void print_map_line(void *content);
-void print_raw_map(t_list *map)
+void	print_raw_map(t_list *map)
 {
-    if (!map)
-    {
-        echo("Empty Map List !"); 
-        return;  
-    }
-    ft_lstiter(map, print_map_line);
+	if (!map)
+	{
+		echo("Empty Map List !");
+		return ;
+	}
+	ft_lstiter(map, print_map_line);
 }
 
-static void print_map_line(void *content)
+static void	print_map_line(void *content)
 {
-    char *colored = find_replace(MAPLINE, "$MAPLINE", (char *)content, 0);
-    ft_putendl_fd(colored, 1);
-    free (colored);
+	char	*colored;
+
+	colored = find_replace(MAPLINE, "$MAPLINE", (char *)content, 0);
+	ft_putendl_fd(colored, 1);
+	free(colored);
 }
 
-
-void echo(char *message)
+void	echo(char *message)
 {
-    message = find_replace(ECHO_MSG, "$message", message, 0);
-    ft_putstr_fd(message, 1);
-    free(message);
-}
-void debug(char *lvl, char *message)
-{
-    message = find_replace(DEBUG_MSG, "$message", lvl, 0);
-    printf("%s\n", message);
-    ft_putstr_fd(message, 1);
-    free(message);
+	message = find_replace(ECHO_MSG, "$message", message, 0);
+	ft_putstr_fd(message, 1);
+	free(message);
 }
 
-void texture_info(t_texture *texture)
+void	debug(char *lvl, char *message)
 {
-    printf("TYPE  : \033[0;36m%s\033[0m \n", texture->type == SOLID ? "COLOR" : "IMAGE");
-    printf("PATH  : \033[0;36m%s\033[0m \n", texture->texture.img_texture.path);
-    printf("COLOR : \033[0;36m%u\033[0m \n", texture->texture.rgba);
-    printf("ARGB  : \033[0;36mrgba(%d,%d,%d,%d)\033[0m \n", (texture->texture.rgba >> 24) & 0xFF, (texture->texture.rgba >> 16) & 0xFF, texture->texture.rgba >> 8 & 0xFF, texture->texture.rgba & 0xFF);
+	message = find_replace(DEBUG_MSG, "$message", lvl, 0);
+	printf("%s\n", message);
+	ft_putstr_fd(message, 1);
+	free(message);
 }
 
-void print_map_grid(t_grid grid)
+void	texture_info(t_texture *texture)
 {
-    size_t idx;
-    
-    idx = 0;
-    if (!grid || !*grid)
-    {
-        echo("Empty Map !");
-        return ;
-    }
-    while (grid[idx])
-    {
-        print_map_line(grid[idx]);
-        idx++;
-    }
+	printf("TYPE  : \033[0;36m%s\033[0m \n",texture->type == "SOLID" ? "COLOR" : "IMAGE");
+	printf("PATH  : \033[0;36m%s\033[0m \n", texture->texture.img_texture.path);
+	printf("COLOR : \033[0;36m%u\033[0m \n", texture->texture.rgba);
+	printf("ARGB  : \033[0;36mrgba(%d,%d,%d,%d)\033[0m \n",
+		(texture->texture.rgba >> 24) & 0xFF,
+		(texture->texture.rgba >> 16) & 0xFF, texture->texture.rgba >> 8 & 0xFF,
+		texture->texture.rgba & 0xFF);
 }
 
-void config_info(t_container *ref)
+void	print_map_grid(t_grid grid)
 {
-    echo("NORTH TEXTURE INFO :");
-    texture_info(&ref->textures.north_txt);
-    echo("SOUTH TEXTURE INFO :");
-    texture_info(&ref->textures.south_txt);
-    echo("EAST TEXTURE INFO :");
-    texture_info(&ref->textures.east_txt);
-    echo("WEST TEXTURE INFO :");
-    texture_info(&ref->textures.west_txt);
-    echo("SKY TEXTURE INFO :");
-    texture_info(&ref->textures.sky_txt);
-    echo("FLOOR TEXTURE INFO :");
-    texture_info(&ref->textures.floor_txt);
-    echo("GRID MAP INFO :");
-    print_map_grid(ref->map.map2d);
+	size_t	idx;
+
+	idx = 0;
+	if (!grid || !*grid)
+	{
+		echo("Empty Map !");
+		return ;
+	}
+	while (grid[idx])
+	{
+		print_map_line(grid[idx]);
+		idx++;
+	}
+}
+
+void	config_info(t_container *ref)
+{
+	echo("NORTH TEXTURE INFO :");
+	texture_info(&ref->textures.north_txt);
+	echo("SOUTH TEXTURE INFO :");
+	texture_info(&ref->textures.south_txt);
+	echo("EAST TEXTURE INFO :");
+	texture_info(&ref->textures.east_txt);
+	echo("WEST TEXTURE INFO :");
+	texture_info(&ref->textures.west_txt);
+	echo("SKY TEXTURE INFO :");
+	texture_info(&ref->textures.sky_txt);
+	echo("FLOOR TEXTURE INFO :");
+	texture_info(&ref->textures.floor_txt);
+	echo("GRID MAP INFO :");
+	print_map_grid(ref->map.map2d);
 }

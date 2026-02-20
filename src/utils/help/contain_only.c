@@ -12,23 +12,23 @@
 
 #include "../../../include/main.h"
 
-bool contain_only(char *str, char *set)
+bool	contain_only(char *str, char *set)
 {
-    int idx;
+	int	idx;
 
-    if (!str || !set)
-        return (false);
-    while (*str)
-    {
-        idx = -1;
-        while (set[++idx])
-        {
-            if (*str == set[idx])
-                break;
-        }
-        if (*str != set[idx])
-            return (false);
-        str++;
-    }
-    return (true);
+	if (!str || !set)
+		return (false);
+	while (*str)
+	{
+		idx = -1;
+		while (set[++idx])
+		{
+			if (*str == set[idx])
+				break ;
+		}
+		if (*str != set[idx])
+			return (false);
+		str++;
+	}
+	return (true);
 }

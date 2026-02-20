@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: anasszgh <anasszgh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 14:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/18 17:02:31 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/20 01:59:40 by anasszgh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 
 static void	init_player(t_container *ref);
 static void	set_player_direction(t_container *game, int dir);
+static void	set_player_n(t_container *game);
 
-void game_init(t_container *ref)
+void	game_init(t_container *ref)
 {
 	input_validator(ref);
 	read_raw_config(ref);
 	split_raw_config(&ref->datafile);
 	valid_textures(ref);
 	map_handler(ref);
-    mlx_handler(ref, 1);
+	mlx_handler(ref, 1);
 	textures_handler(ref, 1);
-    init_player(ref);
+	init_player(ref);
 }
 
-static void init_player(t_container *ref)
+static void	init_player(t_container *ref)
 {
-    size_t	x;
+	size_t	x;
 	size_t	y;
 
 	y = 0;
@@ -51,16 +52,10 @@ static void init_player(t_container *ref)
 	}
 }
 
-
-static void set_player_direction(t_container *game, int dir)
+static void	set_player_direction(t_container *game, int dir)
 {
-    if (dir == 'N')
-	{
-		game->player.dir.x = 0;
-		game->player.dir.y = -1;
-		game->player.plane.x = 0.66;
-		game->player.plane.y = 0;
-	}
+	if (dir == 'N')
+		set_player_n(game);
 	else if (dir == 'S')
 	{
 		game->player.dir.x = 0;
@@ -82,4 +77,12 @@ static void set_player_direction(t_container *game, int dir)
 		game->player.plane.x = 0;
 		game->player.plane.y = -0.66;
 	}
+}
+
+static void	set_player_n(t_container *game)
+{
+	game->player.dir.x = 0;
+	game->player.dir.y = -1;
+	game->player.plane.x = 0.66;
+	game->player.plane.y = 0;
 }

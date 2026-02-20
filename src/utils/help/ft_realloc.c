@@ -12,15 +12,14 @@
 
 #include "../../../include/main.h"
 
-void *ft_realloc(void *ptr, size_t oldsize, size_t newsize)
+void	*ft_realloc(void *ptr, size_t oldsize, size_t newsize)
 {
-    void *newptr;
+	void	*newptr;
 
-    newptr = ft_calloc(newsize, sizeof(char));
-    if (!newptr)
-        return (free(ptr), NULL);
-    ft_memcpy(newptr, ptr, oldsize + 1);
-    free(ptr);
-    return (newptr);
+	newptr = ft_calloc(newsize, sizeof(char));
+	if (!newptr)
+		return (free(ptr), NULL);
+	ft_memcpy(newptr, ptr, oldsize + 1);
+	free(ptr);
+	return (newptr);
 }
-

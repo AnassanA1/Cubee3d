@@ -18,10 +18,10 @@ static char	*ft_get_current_line(char *buffer);
 static char	*ft_reset_leftover(char *buffer);
 
 /**
-* get_next_line - reads a line from file each time called .
-* @fd: file discriptor represent an entry in sys wide open file tables .
-* @return return a string line or NULL if failed .
-*/
+ * get_next_line - reads a line from file each time called .
+ * @fd: file discriptor represent an entry in sys wide open file tables .
+ * @return return a string line or NULL if failed .
+ */
 
 char	*get_next_line(int fd)
 {
@@ -41,11 +41,11 @@ char	*get_next_line(int fd)
 }
 
 /**
-* ft_read_full_line - reads from file till EOF or finds '\n' in previous read.
-* @fd: file discriptor represent an entry in sys wide open file tables.
-* @buffer: heap memory include leftover of previouse reads.
-* @return a string or null.
-*/
+ * ft_read_full_line - reads from file till EOF or finds '\n' in previous read.
+ * @fd: file discriptor represent an entry in sys wide open file tables.
+ * @buffer: heap memory include leftover of previouse reads.
+ * @return a string or null.
+ */
 
 static char	*ft_read_full_line(int fd, char *buffer)
 {
@@ -74,11 +74,11 @@ static char	*ft_read_full_line(int fd, char *buffer)
 }
 
 /**
-* ft_merge_buffers - join what was read previousely with the new read.
-* @oldbuffer: string of previouse read or leftover.
-* @newread: new readed string .
-* @return string 1 + string 2  joined or NULL,
-*/
+ * ft_merge_buffers - join what was read previousely with the new read.
+ * @oldbuffer: string of previouse read or leftover.
+ * @newread: new readed string .
+ * @return string 1 + string 2  joined or NULL,
+ */
 
 static char	*ft_merge_buffers(char *oldbuffer, char *newbuffer)
 {
@@ -104,10 +104,10 @@ static char	*ft_merge_buffers(char *oldbuffer, char *newbuffer)
 }
 
 /**
-* ft_get_current_line -takes the full readed string and retrive till '\n'or'\0'
-* @buffer: full line of previouse read(s),
-* @return return string line.
-*/
+ * ft_get_current_line -takes the full readed string and retrive till '\n'or'\0'
+ * @buffer: full line of previouse read(s),
+ * @return return string line.
+ */
 
 static char	*ft_get_current_line(char *buffer)
 {
@@ -127,10 +127,10 @@ static char	*ft_get_current_line(char *buffer)
 }
 
 /**
-* ft_reset_leftover - reset the old buffer to new one.
-* @buffer: the leftover buffer.
-* @return new buffer contain fron '\n' to '\0'.
-*/
+ * ft_reset_leftover - reset the old buffer to new one.
+ * @buffer: the leftover buffer.
+ * @return new buffer contain fron '\n' to '\0'.
+ */
 
 static char	*ft_reset_leftover(char *buffer)
 {
@@ -150,6 +150,6 @@ static char	*ft_reset_leftover(char *buffer)
 	if (!newbuffer)
 		return (NULL);
 	ft_strlcpy(newbuffer, &buffer[i], (ft_strlen(buffer) - i + 1));
-	free (buffer);
+	free(buffer);
 	return (newbuffer);
 }
