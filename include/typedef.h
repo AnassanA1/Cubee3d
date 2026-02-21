@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:14:02 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/20 13:55:48 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/21 11:36:39 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,6 @@ typedef struct s_queue
 	int					y;
 }						t_queue;
 
-typedef struct s_ray
-{
-	double				camera_x;
-	t_vector			dir;
-	size_t				map_x;
-	size_t				map_y;
-	double				wall_x;
-}						t_ray;
 
 typedef struct s_dda
 {
@@ -111,11 +103,29 @@ typedef struct s_wall
 {
 	int					step_x;
 	int					step_y;
-	int					hit;
 	int					side;
 	double				perp_dist;
 	int					line_height;
 	int					tex_x;
 }						t_wall;
+
+
+typedef struct s_ray
+{
+	double				camera_x;
+	t_vector			dir;
+	t_dda				dda;
+	t_wall				wall;
+	size_t				map_x;
+	size_t				map_y;
+	double				wall_x;
+}						t_ray;
+
+typedef struct s_line
+{
+	unsigned int y_start;
+	unsigned int y_end;
+	double step;
+} t_line;
 
 #endif

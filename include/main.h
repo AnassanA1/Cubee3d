@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/20 13:58:28 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/21 11:43:10 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,10 @@ void		raycasting(t_container *game);
 void		cast_ray(t_container *game, int x);
 
 // dda.c
-void		performing_dda(t_container *game, t_ray *ray, t_dda *dda,
-				t_wall *wall);
+void		init_dda(t_container *ref, t_ray *ray);
+void		performing_dda(t_container *game, t_ray *ray);
 // double  get_perpendular(t_container *game, t_ray *ray, t_wall *wall);
 double		get_perpendular(t_wall *wall, t_dda *data);
-void		draw_wall(t_container *game, int x, t_wall *wall, int line_height);
 // void draw_wall(t_container *game, int x, t_wall *wall, t_ray *ray);
 int			calculate_line_height(double perp_wall_dist, int height);
 
@@ -129,9 +128,6 @@ t_queue		*q_find(t_queue *queue, int x, int y);
 t_queue		*q_last(t_queue *queue);
 int			q_pop(t_queue **queue, t_queue *out);
 void		q_push(t_queue **queue, t_queue *newq);
-void		q_printQueue(t_queue *queue);
-void		q_pushQueue(void);
-void		q_popQueue(t_queue **queue);
 void		q_empty(t_queue **queue);
 bool		is_closed_bff(t_map *map, t_queue **queue);
 bool		is_nospace_bff(t_map *map, t_queue **queue);
