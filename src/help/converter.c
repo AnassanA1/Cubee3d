@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:01:47 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/20 14:04:08 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/21 14:45:53 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,4 @@ t_uint	rgbatoint(char *rgbacolor)
 	}
 	nullarr2d((void ***)&values, length);
 	return (0xFF << 24 | (rgba[0] << 16) | (rgba[1] << 8) | (rgba[2]));
-}
-
-t_uint	hexatoint(char *hexacolor)
-{
-	t_uint	value;
-	char	c;
-
-	value = 0;
-	if (!hexacolor)
-		return (0);
-	while (is_space(*hexacolor))
-		hexacolor++;
-	if (*hexacolor == '#')
-		hexacolor++;
-	while (*hexacolor)
-	{
-		value <<= 4;
-		c = *hexacolor;
-		hexacolor++;
-		if (ft_isdigit(c))
-			value |= (c - '0');
-		else if (ft_isalpha(c))
-			value |= (c - 'A' + 10);
-		else
-			return (0);
-	}
-	return (value);
 }

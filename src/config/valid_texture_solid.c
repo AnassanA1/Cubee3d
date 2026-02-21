@@ -6,33 +6,21 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 18:21:35 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/20 14:03:38 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/21 14:44:01 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/main.h"
 
-static bool	valid_rgb(char *value);
+static int	parse_number(const char **s);
+static int	is_valid_rgb(const char *s);
 
 void	valid_texture_solid(t_container *ref, char *str)
 {
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	tmp = ft_calloc(ft_strlen(str) + 1, sizeof(char));
-	while (*str)
+	char *tmp;
+	
+	if (!is_valid_rgb(str + 1))
 	{
-		str++;
-		if (!is_space(*str))
-		{
-			tmp[i] = *str;
-			i++;
-		}
-	}
-	if (!valid_rgb(tmp))
-	{
-		free(tmp);
 		tmp = find_replace(ERROR_GENERAL, "$MSG", ERROR_RGB, 0);
 		ft_putstr_fd(tmp, STDERR_FILENO);
 		free(tmp);
@@ -40,26 +28,46 @@ void	valid_texture_solid(t_container *ref, char *str)
 		ft_lstclear(&ref->datafile.map, free);
 		exit(EXIT_FAILURE);
 	}
-	free(tmp);
 }
 
-static bool	valid_rgb(char *value)
+static int	is_valid_rgb(const char *s)
 {
-	char	**rgb;
-	size_t	len;
-	size_t	idx;
 
-	rgb = ft_split(value, ',');
-	len = str2dlen(rgb);
-	idx = 0;
-	if (len != 3)
-		return (nullarr2d((void ***)&rgb, len), false);
-	while (idx < len)
-	{
-		if (ft_strlen(rgb[idx]) > 3 || !contain_only(rgb[idx], DECISET)
-			|| ft_atoi(rgb[idx]) > 255)
-			return (nullarr2d((void ***)&rgb, len), false);
-		idx++;
-	}
-	return (nullarr2d((void ***)&rgb, len), true);
+    if (!parse_number(&s))
+        return 0;
+    while (is_space(*s))
+        s++;
+    if (*s++ != ',')
+        return 0;
+    if (!parse_number(&s))
+        return 0;
+    while (is_space(*s))
+        s++;
+    if (*s++ != ',')
+        return 0;
+    if (!parse_number(&s))
+        return 0;
+    while (is_space(*s))
+        s++;
+    return (*s == '\0');
+}
+
+static int parse_number(const char **s)
+{
+    int num = 0;
+    int digits = 0;
+
+    while (is_space(**s))
+        (*s)++;
+    while (ft_isdigit(**s))
+    {
+        num = num * 10 + (**s - '0');
+        digits++;
+        if (num > 255)
+            return 0;
+        (*s)++;
+    }
+    if (digits == 0)
+        return 0;
+    return 1;
 }

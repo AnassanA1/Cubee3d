@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:13:48 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/21 12:11:38 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/21 14:04:26 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ void	init_step(t_ray *ray)
 
 mlx_image_t	*get_wall_texture(t_container *ref, t_wall *wall)
 {
-	if (wall->side == 0) // Vertical wall (NS)
+	if (wall->side == 0)
 	{
 		if (wall->step_x > 0)
 			return (get_texture_image(ref, EAST));
 		else
 			return (get_texture_image(ref, WEST));
 	}
-	else // Horizontal wall (EW)
+	else
 	{
 		if (wall->step_y > 0)
 			return (get_texture_image(ref, SOUTH));
@@ -95,9 +95,9 @@ void	calculate_wall_x(t_container *ref, t_ray *ray, t_wall *wall, double perpen_
 void	calculate_tex_x(t_ray *ray, t_wall *wall, mlx_image_t *texture)
 {
 	wall->tex_x = (int)(ray->wall_x * (double)texture->width);
-	if ((wall->side == 0 && ray->dir.x > 0) || (wall->side == 1
-			&& ray->dir.y < 0))
-		wall->tex_x = texture->width - wall->tex_x - 1;
+	//if ((wall->side == 0 && ray->dir.x > 0) || (wall->side == 1
+	//		&& ray->dir.y < 0))
+	//	wall->tex_x = texture->width - wall->tex_x - 1;
 }
 
 int	get_texture_pixel(mlx_image_t *texture, int x, int y)
