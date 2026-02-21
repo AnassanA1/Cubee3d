@@ -14,7 +14,7 @@ DEPENDENCY_NAME = ft
 DEPENDENCY_HEADER = $(DEPENDENCY_PATH)
 
 #FRAMEWORKS = -ldl -lglfw -pthread -lm
-FRAMEWORKS = -framework OpenGL -framework AppKit -L/Users/msidry/.brew/lib -lglfw
+FRAMEWORKS = -framework OpenGL -framework AppKit -L/Users/azghibat/homebrew/lib -lglfw
 MLXLIB_NAME = mlx42
 MLXLIB = -l$(MLXLIB_NAME) $(FRAMEWORKS)
 MLXLIB_DIR = libs/mlx/
