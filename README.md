@@ -18,15 +18,48 @@ This project focuses on:
 ---
 
 ## Instructions
-Make Run the program with a valid map file: ./cube3D maps/example.cub
-the MinilibX is provided in libs.
-Controls:
-    - W, A, S, D Move the player
-    - Arrow keys Rotate the camera
-    - ESC — Exit the program
-To compile the project, run:
-make run
 
+### Requirements
+
+- macOS
+- `make`
+- `cc`
+- `cmake`
+- `git`
+
+---
+
+### MLX Setup
+
+This project uses **MLX42** for graphics.
+
+Before compiling for the first time, run:
+    - make mlx_setup
+
+This command downloads, builds, and installs MLX42 locally in the project.
+
+---
+
+### Compilation
+
+To check with the norminette:
+    - Make normscheck
+To compile the project:
+    - Make
+Or run it manually with a map file:
+    - ./cube3D maps/example.cub
+To test with default path map:
+    - Make run
+
+---
+
+### Controls
+
+- `W`, `A`, `S`, `D` — Move the player
+- Arrow keys — Rotate the camera
+- `ESC` — Exit the program
+
+---
 
 ### Resources
 The raycasting system in this project is implemented following the classical approach described in Lode Vandevenne’s raycasting tutorial.
