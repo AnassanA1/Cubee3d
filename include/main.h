@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: azghibat <azghibat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/22 18:53:20 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/22 19:17:40 by azghibat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,9 @@ void		strafe_left(t_container *game);
 
 void		game_loop(void *param);
 // drawing.c
-//void		put_pixel(mlx_image_t *img, int x, int y, int color);
 void		draw_floor_ceilling(t_container *game);
-// int		 get_wall_color(t_textures *txt, int side, int step_x, int step_y);
+void		put_pixel(mlx_image_t *img, int x, int y, int color);
+int			get_pixel(mlx_image_t *texture, int x, int y);
 
 // raycasting.c
 void		raycasting(t_container *game);

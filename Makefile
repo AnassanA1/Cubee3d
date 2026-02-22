@@ -14,7 +14,7 @@ DEPENDENCY_NAME = ft
 DEPENDENCY_HEADER = $(DEPENDENCY_PATH)
 
 #FRAMEWORKS = -ldl -lglfw -pthread -lm
-FRAMEWORK_PATH = /Users/msidry/.brew/lib
+FRAMEWORK_PATH = /Users/azghibat/homebrew/lib
 FRAMEWORKS = -framework OpenGL -framework AppKit -L $(FRAMEWORK_PATH) -lglfw
 MLXLIB_NAME = mlx42
 MLXLIB = -l$(MLXLIB_NAME) $(FRAMEWORKS)
@@ -40,6 +40,7 @@ SRCS =	src/game_init.c \
 		src/movements/handler.c \
 		src/movements/move.c \
 		src/movements/rotate.c \
+		src/drawing/pixels.c \
 		src/drawing/drawing.c \
 		src/raycasting/raycasting.c \
 		src/raycasting/dda.c
