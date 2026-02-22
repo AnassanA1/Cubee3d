@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/22 11:39:16 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/22 18:56:20 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,3 @@ static void	default_init(t_container *ref, int argc, char **argv)
 	ref->display.height = WIN_HEIGHT;
 	ref->display.title = WIN_TITLE;
 }
-

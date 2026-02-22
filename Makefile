@@ -61,11 +61,12 @@ HELPERS =	src/help/get_next_line.c \
 			src/help/ft_realloc.c \
 			src/help/normalize.c \
 			src/help/boundaryfloodfill.c \
+			src/help/min_max.c \
 			src/queue/q_crud.c \
 			src/queue/q_find.c  \
 			src/queue/q_last.c  \
 			src/queue/q_pop.c \
-			src/queue/q_push.c
+			src/queue/q_push.c \
 
 		 
 
@@ -116,6 +117,7 @@ TESTMAP = maps/test.cub
 run : $(NAME)
 	@echo $(RUNNING) $(NAME)
 	@./$(NAME) $(TESTMAP)
+	@echo $(EXITING) $(NAME)
 
 .PHONY: all clean fclean re run mlx_setup
 
@@ -148,7 +150,7 @@ REMOVE = "\033[1;90m🗑️  Remove :\033[0m"
 BUILD = "\033[1;35m🛠️ Building :\033[0m"
 RUNNING = "\033[1;35m🚀 Running :\033[0m"
 
-
+EXITING = "\033[1;35m🚀 exiting :\033[0m"
 
 # NORMS CHECK AND STYLING !
 

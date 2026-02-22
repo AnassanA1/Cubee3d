@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:14:02 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/22 18:07:59 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/22 18:58:07 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,20 +122,19 @@ typedef struct s_ray
 
 typedef struct s_vline
 {
-    unsigned int    x;
-    unsigned int    start;
-    unsigned int    end;
-    double          height;
-    bool            dark;
-} t_vline;
+	unsigned int	x;
+	unsigned int	start;
+	unsigned int	end;
+	double			height;
+}	t_vline;
 
 typedef struct s_txt
 {
-    mlx_image_t     *texture;
-    unsigned int    x;
-    unsigned int    y;
-    double          pos;
-    double          step;
-	bool			darker;
-} t_txt;
+	mlx_image_t		*texture;
+	unsigned int	x;
+	unsigned int	y;
+	double			pos;
+	double			step;
+}	t_txt;
+
 #endif

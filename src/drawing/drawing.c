@@ -6,17 +6,17 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:23:09 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/22 18:13:57 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/22 19:12:05 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/main.h"
 
-
-static void	put_pixel(mlx_image_t *img, int x, int y, int color);
-static int	get_pixel(mlx_image_t *texture, int x, int y);
+static void			put_pixel(mlx_image_t *img, int x, int y, int color);
+static int			get_pixel(mlx_image_t *texture, int x, int y);
 static mlx_image_t	*get_wall_texture(t_container *ref, t_wall *wall);
-static void init_texture(t_container *ref, t_ray *ray, t_vline *line, t_txt *txt);
+static void			init_texture(t_container *ref,
+						t_ray *ray, t_vline *line, t_txt *txt);
 
 void	draw_floor_ceilling(t_container *ref)
 {
@@ -39,26 +39,23 @@ void	draw_floor_ceilling(t_container *ref)
 	}
 }
 
-
-void draw_line(t_container *ref, t_ray *ray, t_vline *line)
+void	draw_line(t_container *ref, t_ray *ray, t_vline *line)
 {
-    t_txt txt;
-    unsigned int y;
-	unsigned int pixel;
+	t_txt			txt;
+	unsigned int	y;
+	unsigned int	pixel;
 
-    init_texture(ref, ray, line, &txt);
-    y = line->start;
-    while (y < line->end)
-    {
+	init_texture(ref, ray, line, &txt);
+	y = line->start;
+	while (y < line->end)
+	{
 		txt.y = (unsigned int)txt.pos % txt.texture->height;
 		txt.pos += txt.step;
 		pixel = get_pixel(txt.texture, ray->wall.tex_x, txt.y);
-        put_pixel( ref->display.img, line->x, y, pixel);
-        y++;
-    }
+		put_pixel( ref->display.img, line->x, y, pixel);
+		y++;
+	}
 }
-
-
 
 static void	put_pixel(mlx_image_t *img, int x, int y, int color)
 {
@@ -86,7 +83,7 @@ static int	get_pixel(mlx_image_t *texture, int x, int y)
 	return (color);
 }
 
-static void init_texture(t_container *ref, t_ray *ray, t_vline *line, t_txt *txt)
+static void	init_texture(t_container *ref, t_ray *ray, t_vline *line, t_txt *txt)
 {
 	double	wall_top;
 
@@ -98,7 +95,7 @@ static void init_texture(t_container *ref, t_ray *ray, t_vline *line, t_txt *txt
         ray->wall_x = ref->player.pos.y + ray->ppd * ray->dir.y;
     else
         ray->wall_x = ref->player.pos.x + ray->ppd * ray->dir.x;
-    ray->wall_x -= floor(ray->wall_x);
+    ray->wall_x -= (int)(ray->wall_x);
     ray->wall.tex_x = (int)(ray->wall_x * txt->texture->width);
     if (ray->wall.tex_x >= (int)txt->texture->width)
         ray->wall.tex_x = txt->texture->width - 1;

@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/22 18:12:09 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/22 18:53:20 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ t_uint		match_count(char *str, unsigned char c);
 bool		contain_only(char *str, char *set);
 			// check if string composed only of set;
 char		*capitalize(const char *str);
-t_uint		hexatoint(char *hexacolor);
 		// converte hexa string to t_uint example: #FFFFFF to ~0
 char		**serializer(t_list *list);
 t_list		*dserializer(char **arr);
@@ -92,6 +91,8 @@ void		transform(char *str, const char *set, int c);
 void		*ft_realloc(void *ptr, size_t oldsize, size_t newsize);
 char		*normalize(char *str, size_t newsize, unsigned char toapp);
 void		**alloc2darr(size_t elem, size_t items, size_t itemsize);
+int			max(int a, int b);
+int			min(int a, int b);
 
 // movements.c
 void		movement_handler(t_container *game);
