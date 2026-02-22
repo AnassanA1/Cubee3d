@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:14:02 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/22 11:22:57 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/22 18:07:59 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,14 +116,26 @@ typedef struct s_ray
 	t_wall				wall;
 	size_t				map_x;
 	size_t				map_y;
+	double				ppd;
 	double				wall_x;
 }						t_ray;
 
-typedef struct s_line
+typedef struct s_vline
 {
-	unsigned int	y_start;
-	unsigned int	y_end;
-	double			step;
-}	t_line;
+    unsigned int    x;
+    unsigned int    start;
+    unsigned int    end;
+    double          height;
+    bool            dark;
+} t_vline;
 
+typedef struct s_txt
+{
+    mlx_image_t     *texture;
+    unsigned int    x;
+    unsigned int    y;
+    double          pos;
+    double          step;
+	bool			darker;
+} t_txt;
 #endif

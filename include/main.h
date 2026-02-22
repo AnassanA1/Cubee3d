@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/21 11:43:10 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/22 18:12:09 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,10 @@ mlx_image_t	*load_texture_image(t_container *ref, char *path);
 t_uint		get_color(t_container *ref, char *target);
 mlx_image_t	*get_texture_image(t_container *ref, char *target);
 
-void		draw_floor_ceilling(t_container *ref);
 void		raycasting(t_container *ref);
 void		cast_ray(t_container *ref, int x);
+void		draw_floor_ceilling(t_container *ref);
+void		draw_line(t_container *ref, t_ray *ray, t_vline *line);
 
 // HELPER
 char		*get_next_line(int fd);
@@ -105,7 +106,7 @@ void		strafe_left(t_container *game);
 
 void		game_loop(void *param);
 // drawing.c
-void		put_pixel(mlx_image_t *img, int x, int y, int color);
+//void		put_pixel(mlx_image_t *img, int x, int y, int color);
 void		draw_floor_ceilling(t_container *game);
 // int		 get_wall_color(t_textures *txt, int side, int step_x, int step_y);
 

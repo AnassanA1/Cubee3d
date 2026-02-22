@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:31:07 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/22 11:26:37 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/22 15:25:41 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	performing_dda(t_container *ref, t_ray *ray)
 		if (ref->map.map2d[ray->map_y][ray->map_x] == '1')
 			break ;
 	}
+	ray->ppd = get_perpendular(&ray->wall, &ray->dda);
 }
 
 void	init_dda(t_container *ref, t_ray *ray)
