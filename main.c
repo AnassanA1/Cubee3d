@@ -6,13 +6,12 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2026/02/20 14:12:11 by msidry           ###   ########.fr       */
+/*   Updated: 2026/02/22 11:39:16 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/main.h"
 
-// static void	leak_check(void);
 static void	default_init(t_container *ref, int argc, char **argv);
 
 int	main(int argc, char *argv[])
@@ -23,7 +22,6 @@ int	main(int argc, char *argv[])
 	game_init(&game);
 	game_run(&game);
 	game_destroy(&game);
-	//atexit(leak_check);
 	return (0);
 }
 
@@ -37,7 +35,3 @@ static void	default_init(t_container *ref, int argc, char **argv)
 	ref->display.title = WIN_TITLE;
 }
 
-// static void	leak_check(void)
-// {
-// 	system("leaks -q cube3D");
-// }

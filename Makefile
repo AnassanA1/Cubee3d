@@ -14,7 +14,8 @@ DEPENDENCY_NAME = ft
 DEPENDENCY_HEADER = $(DEPENDENCY_PATH)
 
 #FRAMEWORKS = -ldl -lglfw -pthread -lm
-FRAMEWORKS = -framework OpenGL -framework AppKit -L/Users/azghibat/homebrew/lib -lglfw
+FRAMEWORK_PATH = /Users/msidry/.brew/lib
+FRAMEWORKS = -framework OpenGL -framework AppKit -L $(FRAMEWORK_PATH) -lglfw
 MLXLIB_NAME = mlx42
 MLXLIB = -l$(MLXLIB_NAME) $(FRAMEWORKS)
 MLXLIB_DIR = libs/mlx/
@@ -110,15 +111,31 @@ fclean : clean
 	@$(RM) $(RMFLAGS) $(NAME)
 
 
-# // TODO: Add program params for testing !
-
-MAP = maps/test.cub
+TESTMAP = maps/test.cub
 
 run : $(NAME)
 	@echo $(RUNNING) $(NAME)
-	@./$(NAME) $(MAP)
+	@./$(NAME) $(TESTMAP)
 
-.PHONY: all clean fclean re run
+.PHONY: all clean fclean re run mlx_setup
+
+
+
+MLX_DIR = /tmp/MLX42
+MLX_BUILD = $(MLX_DIR)/build
+MLX_LOCAL = libs/mlx
+
+mlx_setup:
+	@if [ ! -d "$(MLX_DIR)" ]; then \
+		git clone https://github.com/codam-coding-college/MLX42.git $(MLX_DIR); \
+	fi
+	cmake -S $(MLX_DIR) -B $(MLX_BUILD)
+	cmake --build $(MLX_BUILD)
+	mkdir -p $(MLX_LOCAL)
+	cp $(MLX_BUILD)/libmlx42.a $(MLX_LOCAL)
+	cp -r $(MLX_DIR)/include/MLX42/ $(MLX_LOCAL)
+
+
 
 
 # MESSAGES 
